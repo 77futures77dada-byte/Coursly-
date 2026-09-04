@@ -1,0 +1,84 @@
+{
+  "brand": { "name": "Coursly", "tagline": "Leia sobiv juhendaja. Broneeri. Õpi." },
+  "nav": {
+    "findTutor": "Leia juhendaja",
+    "howItWorks": "Kuidas see toimib",
+    "forTutors": "Juhendajatele",
+    "signIn": "Logi sisse",
+    "getStarted": "Alusta",
+    "dashboard": "Töölaud",
+    "lessons": "Tunnid",
+    "messages": "Sõnumid",
+    "profile": "Profiil"
+  },
+  "mobileNav": {
+    "home": "Avaleht",
+    "search": "Otsing",
+    "lessons": "Tunnid",
+    "messages": "Sõnumid",
+    "profile": "Profiil"
+  },
+  "marketing": {
+    "heroTitle": "Õpi juhendajatelt, kes sinuga sobivad",
+    "heroSubtitle": "Ütle meile oma aine, tase ja eesmärk. Sobitame sind kontrollitud juhendajatega ja näitame, miks igaüks sulle sobib.",
+    "heroCtaPrimary": "Leia mulle juhendaja",
+    "heroCtaSecondary": "Kuidas see toimib",
+    "stepsTitle": "Kuidas see toimib",
+    "step1Title": "Räägi oma eesmärgist",
+    "step1Body": "Lühike küsimustik: aine, tase, eesmärk, keel, eelarve ja vaba aeg.",
+    "step2Title": "Vaata sobivaid juhendajaid",
+    "step2Body": "Järjestatud juhendajad selge sobivusprotsendiga — aine, tase ja eesmärk kaaluvad kõige rohkem.",
+    "step3Title": "Broneeri ja maksa turvaliselt",
+    "step3Body": "Vali aeg, maksa Stripe'i kaudu, liitu klassiruumiga igast seadmest.",
+    "forTutorsTitle": "Õpeta Courslys",
+    "forTutorsBody": "Määra hind ja saadavus, läbi kontroll ja saa broneeringuid. Väljamaksed käivad Stripe'i kaudu.",
+    "forTutorsCta": "Hakka juhendajaks"
+  },
+  "search": {
+    "title": "Leia juhendaja",
+    "subjectLabel": "Aine",
+    "levelLabel": "Tase",
+    "languageLabel": "Keel",
+    "priceLabel": "Max hind tunnis",
+    "availabilityLabel": "Saadavus",
+    "resultsCount": "{count, plural, =0 {Juhendajaid ei leitud} one {# juhendaja} other {# juhendajat}}",
+    "matchScore": "{score}% sobivus"
+  },
+  "onboarding": {
+    "title": "Leiame sulle juhendaja",
+    "subject": "Mida soovid õppida?",
+    "level": "Sinu praegune tase",
+    "goal": "Sinu eesmärk",
+    "language": "Eelistatud tunni keel",
+    "budget": "Eelarve tunnis (€)",
+    "availability": "Millal oled tavaliselt vaba?",
+    "submit": "Näita sobivaid juhendajaid",
+    "back": "Tagasi",
+    "next": "Edasi"
+  },
+  "booking": {
+    "bookLesson": "Broneeri tund",
+    "selectSlot": "Vali aeg",
+    "duration": "Kestus",
+    "total": "Kokku",
+    "payAndBook": "Maksa ja broneeri",
+    "confirmedTitle": "Tund broneeritud",
+    "confirmedBody": "See on sinu kalendris. Saatsime üksikasjad e-postiga."
+  },
+  "states": {
+    "loading": "Laadimine…",
+    "emptyDefault": "Siin pole veel midagi.",
+    "emptyMatches": "Me ei leidnud täpset vastet — proovi filtreid laiendada.",
+    "emptyLessons": "Tunde veel pole. Leia juhendaja ja broneeri esimene.",
+    "emptyMessages": "Vestlusi veel pole.",
+    "errorTitle": "Midagi läks valesti",
+    "errorBody": "Palun proovi uuesti. Kui kordub, võta ühendust toega.",
+    "retry": "Proovi uuesti",
+    "successGeneric": "Valmis."
+  },
+  "role": { "student": "Õpilane", "tutor": "Juhendaja", "admin": "Administraator" },
+  "comingSoon": {
+    "title": "Tuleb pärast käivitamist",
+    "body": "Seda Coursly osa esimeses versioonis veel pole."
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "brand": { "name": "Coursly", "tagline": "Find the right tutor. Book. Learn." },
+  "nav": {
+    "findTutor": "Find a tutor",
+    "howItWorks": "How it works",
+    "forTutors": "For tutors",
+    "signIn": "Sign in",
+    "getStarted": "Get started",
+    "dashboard": "Dashboard",
+    "lessons": "Lessons",
+    "messages": "Messages",
+    "profile": "Profile"
+  },
+  "mobileNav": {
+    "home": "Home",
+    "search": "Search",
+    "lessons": "Lessons",
+    "messages": "Messages",
+    "profile": "Profile"
+  },
+  "marketing": {
+    "heroTitle": "Learn from tutors who fit you",
+    "heroSubtitle": "Tell us your subject, level and goal. We match you with verified tutors and show you exactly why each one fits.",
+    "heroCtaPrimary": "Find my tutor",
+    "heroCtaSecondary": "How it works",
+    "stepsTitle": "How it works",
+    "step1Title": "Tell us your goal",
+    "step1Body": "A short survey: subject, level, target, language, budget and when you are free.",
+    "step2Title": "See your matches",
+    "step2Body": "Ranked tutors with a match score you can actually read — subject, level and goal weigh most.",
+    "step3Title": "Book and pay securely",
+    "step3Body": "Pick a slot, pay through Stripe, join the classroom from any device.",
+    "forTutorsTitle": "Teach on Coursly",
+    "forTutorsBody": "Set your price and availability, get verified, and receive bookings. Payouts handled by Stripe.",
+    "forTutorsCta": "Become a tutor"
+  },
+  "search": {
+    "title": "Find a tutor",
+    "subjectLabel": "Subject",
+    "levelLabel": "Level",
+    "languageLabel": "Language",
+    "priceLabel": "Max price / hour",
+    "availabilityLabel": "Availability",
+    "resultsCount": "{count, plural, =0 {No tutors} one {# tutor} other {# tutors}}",
+    "matchScore": "{score}% match"
+  },
+  "onboarding": {
+    "title": "Let's find your tutor",
+    "subject": "What do you want to learn?",
+    "level": "Your current level",
+    "goal": "Your goal",
+    "language": "Preferred lesson language",
+    "budget": "Budget per hour (€)",
+    "availability": "When are you usually free?",
+    "submit": "Show my matches",
+    "back": "Back",
+    "next": "Next"
+  },
+  "booking": {
+    "bookLesson": "Book a lesson",
+    "selectSlot": "Select a time",
+    "duration": "Duration",
+    "total": "Total",
+    "payAndBook": "Pay and book",
+    "confirmedTitle": "Lesson booked",
+    "confirmedBody": "It's in your calendar. We've emailed the details."
+  },
+  "states": {
+    "loading": "Loading…",
+    "emptyDefault": "Nothing here yet.",
+    "emptyMatches": "We couldn't find an exact match — try widening your filters.",
+    "emptyLessons": "No lessons yet. Find a tutor to book your first one.",
+    "emptyMessages": "No conversations yet.",
+    "errorTitle": "Something went wrong",
+    "errorBody": "Please try again. If it keeps happening, contact support.",
+    "retry": "Try again",
+    "successGeneric": "Done."
+  },
+  "role": { "student": "Student", "tutor": "Tutor", "admin": "Admin" },
+  "comingSoon": {
+    "title": "Coming after launch",
+    "body": "This part of Coursly isn't in the first release yet."
+  }
+}
