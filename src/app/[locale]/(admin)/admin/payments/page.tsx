@@ -1,4 +1,4 @@
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Placeholder } from "@/components/Placeholder";
 import { DEFAULT_PLATFORM_FEE_BPS } from "@/lib/constants";
 
@@ -9,10 +9,11 @@ export default async function AdminPaymentsPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations("stub.adminPayments");
   return (
     <Placeholder
-      title="Payments"
-      description={`Payments, refunds and payouts (Stripe Connect). Commission is currently ${DEFAULT_PLATFORM_FEE_BPS / 100}% and is editable here — the value is stored in platform_settings.`}
+      title={t("title")}
+      description={t("description", { feePct: DEFAULT_PLATFORM_FEE_BPS / 100 })}
       scope="mvp"
     />
   );

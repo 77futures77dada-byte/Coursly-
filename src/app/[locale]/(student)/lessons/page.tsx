@@ -9,11 +9,12 @@ export default async function LessonsPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const t = await getTranslations({ locale, namespace: "nav" });
+  const tNav = await getTranslations({ locale, namespace: "nav" });
+  const t = await getTranslations({ locale, namespace: "stub.lessons" });
 
   return (
-    <Placeholder title={t("lessons")} scope="mvp">
-      <EmptyState title="No lessons yet" body="Upcoming, past and cancelled lessons show up here in tabs." />
+    <Placeholder title={tNav("lessons")} description={t("description")} scope="mvp">
+      <EmptyState title={t("emptyTitle")} body={t("emptyBody")} />
     </Placeholder>
   );
 }

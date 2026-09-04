@@ -1,4 +1,4 @@
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Placeholder } from "@/components/Placeholder";
 
 export default async function AdminUsersPage({
@@ -8,11 +8,8 @@ export default async function AdminUsersPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations("stub.adminUsers");
   return (
-    <Placeholder
-      title="Users"
-      description="Search, filter by role, block / unblock, soft-delete. Deletion honours the GDPR erasure flow."
-      scope="mvp"
-    />
+    <Placeholder title={t("title")} description={t("description")} scope="mvp" />
   );
 }

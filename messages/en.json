@@ -9,7 +9,11 @@
     "dashboard": "Dashboard",
     "lessons": "Lessons",
     "messages": "Messages",
-    "profile": "Profile"
+    "profile": "Profile",
+    "learning": "Learning",
+    "homework": "Homework",
+    "progress": "Progress",
+    "goals": "Goals"
   },
   "mobileNav": {
     "home": "Home",
@@ -17,6 +21,9 @@
     "lessons": "Lessons",
     "messages": "Messages",
     "profile": "Profile"
+  },
+  "footer": {
+    "tagline": "Online tutoring — Estonia first, EU next."
   },
   "marketing": {
     "heroTitle": "Learn from tutors who fit you",
@@ -34,6 +41,18 @@
     "forTutorsBody": "Set your price and availability, get verified, and receive bookings. Payouts handled by Stripe.",
     "forTutorsCta": "Become a tutor"
   },
+  "subjects": {
+    "mathematics": "Mathematics",
+    "physics": "Physics",
+    "english": "English",
+    "chemistry": "Chemistry",
+    "biology": "Biology"
+  },
+  "languages": {
+    "et": "Estonian",
+    "ru": "Russian",
+    "en": "English"
+  },
   "search": {
     "title": "Find a tutor",
     "subjectLabel": "Subject",
@@ -42,7 +61,16 @@
     "priceLabel": "Max price / hour",
     "availabilityLabel": "Availability",
     "resultsCount": "{count, plural, =0 {No tutors} one {# tutor} other {# tutors}}",
-    "matchScore": "{score}% match"
+    "matchScore": "{score}% match",
+    "filtersNote": "Filtering by every parameter is coming soon."
+  },
+  "tutorCard": {
+    "viewProfile": "View profile"
+  },
+  "tutorProfile": {
+    "book": "Book a lesson",
+    "message": "Message",
+    "contentNote": "The tutor's introduction, video, subjects and levels, languages, reviews and availability calendar will appear here."
   },
   "onboarding": {
     "title": "Let's find your tutor",
@@ -54,7 +82,35 @@
     "availability": "When are you usually free?",
     "submit": "Show my matches",
     "back": "Back",
-    "next": "Next"
+    "next": "Next",
+    "previewText": "With your answers we can already score {count} factors. Example best match: {score}%",
+    "options": {
+      "level": {
+        "primary": "Primary",
+        "basic": "Basic school",
+        "gymnasium": "Gymnasium",
+        "university": "University",
+        "adult": "Adult"
+      },
+      "goal": {
+        "catchUp": "Catch up",
+        "grades": "Improve grades",
+        "exam": "State exam",
+        "fluency": "Language fluency"
+      },
+      "budget": {
+        "lt15": "≤ 15 €",
+        "b15_25": "15–25 €",
+        "b25_35": "25–35 €",
+        "gt35": "35+ €"
+      },
+      "availability": {
+        "weekdayMornings": "Weekday mornings",
+        "weekdayEvenings": "Weekday evenings",
+        "weekends": "Weekends",
+        "flexible": "Flexible"
+      }
+    }
   },
   "booking": {
     "bookLesson": "Book a lesson",
@@ -63,7 +119,174 @@
     "total": "Total",
     "payAndBook": "Pay and book",
     "confirmedTitle": "Lesson booked",
-    "confirmedBody": "It's in your calendar. We've emailed the details."
+    "confirmedBody": "It's in your calendar. We've emailed the details.",
+    "paymentNote": "Payment is via Stripe. The booking is confirmed only after payment succeeds.",
+    "minutesShort": "{count} min",
+    "weekdaysShort": {
+      "mon": "Mon",
+      "tue": "Tue",
+      "wed": "Wed",
+      "thu": "Thu",
+      "fri": "Fri",
+      "sat": "Sat",
+      "sun": "Sun"
+    }
+  },
+  "signIn": {
+    "emailPlaceholder": "you@example.com",
+    "sendMagicLink": "Send magic link",
+    "or": "or",
+    "continueWithGoogle": "Continue with Google"
+  },
+  "tutorOnboarding": {
+    "title": "Become a tutor",
+    "intro": "Seven steps. After you submit, the Coursly team reviews your profile before it appears in search.",
+    "gdprBadge": "Document deleted after review",
+    "steps": {
+      "about": "About you & headline",
+      "subjects": "Subjects & levels",
+      "languages": "Languages",
+      "price": "Price per hour",
+      "availability": "Weekly availability",
+      "video": "Intro video",
+      "verification": "Identity verification"
+    }
+  },
+  "classroom": {
+    "header": "Classroom · lesson {id}",
+    "leave": "Leave",
+    "chat": "Chat",
+    "noMessages": "No messages yet.",
+    "messagePlaceholder": "Message…",
+    "videoPlaceholder": "Video area — the lesson's video call opens here."
+  },
+  "tutorNav": {
+    "title": "Coursly · Tutor",
+    "dashboard": "Dashboard",
+    "students": "Students",
+    "schedule": "Schedule",
+    "homework": "Homework",
+    "materials": "Materials",
+    "earnings": "Earnings"
+  },
+  "adminNav": {
+    "title": "Coursly · Admin",
+    "overview": "Overview",
+    "tutors": "Tutor verification",
+    "users": "Users",
+    "payments": "Payments",
+    "reports": "Reports & disputes",
+    "subjects": "Subjects"
+  },
+  "studentDashboard": {
+    "stats": {
+      "upcomingLessons": "Upcoming lessons",
+      "hoursLearned": "Hours learned",
+      "activeTutors": "Active tutors"
+    },
+    "nextLesson": "Next lesson",
+    "emptyTitle": "No lessons booked",
+    "emptyBody": "Find a tutor and book your first lesson to get started."
+  },
+  "tutorDashboard": {
+    "title": "Tutor dashboard",
+    "description": "Pending booking requests, today's lessons, this month's earnings and your verification status.",
+    "stats": {
+      "pendingRequests": "Pending requests",
+      "lessonsThisWeek": "Lessons this week",
+      "earningsMonth": "Earnings (month)"
+    },
+    "emptyTitle": "No booking requests",
+    "emptyBody": "New requests from students appear here for you to confirm."
+  },
+  "adminOverview": {
+    "title": "Overview",
+    "description": "Users, revenue, platform commission, the review queue and open disputes.",
+    "stats": {
+      "users": "Users",
+      "tutorsVerified": "Tutors verified",
+      "gmvMonth": "GMV (month)",
+      "commissionMonth": "Commission (month)"
+    }
+  },
+  "stub": {
+    "lessons": {
+      "description": "All your lessons gather here — upcoming, past and cancelled.",
+      "emptyTitle": "No lessons yet",
+      "emptyBody": "Upcoming, past and cancelled lessons will show up here."
+    },
+    "lessonDetail": {
+      "title": "Lesson detail",
+      "description": "Here you'll see the lesson time, tutor, subject and status, and a button to join the classroom when it starts.",
+      "join": "Join classroom"
+    },
+    "messages": {
+      "description": "Here you can chat in real time with a tutor you're actively working with."
+    },
+    "profile": {
+      "description": "Name, photo, language, notification preferences and your survey answers — all editable."
+    },
+    "learning": {
+      "title": "Learning",
+      "description": "Materials shared by tutors, saved notes and flashcards. Coming after launch."
+    },
+    "homework": {
+      "title": "Homework",
+      "description": "Assignments from tutors, your answers, scores and feedback. Coming after launch."
+    },
+    "progress": {
+      "title": "Progress",
+      "description": "Your results per subject over time. Coming after launch."
+    },
+    "goals": {
+      "title": "Goals",
+      "description": "Target results and deadlines per subject, updated as you progress. Coming after launch."
+    },
+    "tutorStudents": {
+      "title": "Students",
+      "description": "Students you're actively working with — a confirmed or completed booking."
+    },
+    "tutorSchedule": {
+      "title": "Schedule",
+      "description": "Your weekly availability windows and confirmed lessons."
+    },
+    "tutorEarnings": {
+      "title": "Earnings",
+      "description": "Completed lessons, totals, the platform fee ({feePct}%), your payout and payout requests."
+    },
+    "tutorHomework": {
+      "title": "Homework",
+      "description": "Create assignments, review answers, give scores and feedback. Coming after launch."
+    },
+    "tutorMaterials": {
+      "title": "Materials",
+      "description": "Upload files and choose who can see them. Coming after launch."
+    },
+    "adminTutors": {
+      "title": "Tutor verification",
+      "description": "Profiles awaiting review. Approve, reject or suspend. Documents are deleted after review.",
+      "empty": "Verification queue is empty"
+    },
+    "adminUsers": {
+      "title": "Users",
+      "description": "Search, filter by role, block or unblock, and delete users."
+    },
+    "adminPayments": {
+      "title": "Payments",
+      "description": "Payments, refunds and payouts. The platform commission is currently {feePct}% and can be changed here."
+    },
+    "adminReports": {
+      "title": "Reports & disputes",
+      "description": "User reports and disputed bookings. Resolve, refund or escalate.",
+      "empty": "Nothing to moderate"
+    },
+    "adminSubjects": {
+      "title": "Subjects",
+      "description": "Add and edit subjects and categories, with names in every language."
+    }
+  },
+  "placeholder": {
+    "notBuilt": "This screen isn't ready yet — it's coming soon."
   },
   "states": {
     "loading": "Loading…",
@@ -74,7 +297,8 @@
     "errorTitle": "Something went wrong",
     "errorBody": "Please try again. If it keeps happening, contact support.",
     "retry": "Try again",
-    "successGeneric": "Done."
+    "successGeneric": "Done.",
+    "backHome": "Back to home"
   },
   "role": { "student": "Student", "tutor": "Tutor", "admin": "Admin" },
   "comingSoon": {

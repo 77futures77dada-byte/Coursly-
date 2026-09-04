@@ -1,4 +1,4 @@
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Placeholder } from "@/components/Placeholder";
 
 export default async function AdminSubjectsPage({
@@ -8,11 +8,8 @@ export default async function AdminSubjectsPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations("stub.adminSubjects");
   return (
-    <Placeholder
-      title="Subjects"
-      description="CRUD for subjects and categories, with localized names (name_et / name_ru / name_en)."
-      scope="mvp"
-    />
+    <Placeholder title={t("title")} description={t("description")} scope="mvp" />
   );
 }

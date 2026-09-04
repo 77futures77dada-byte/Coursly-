@@ -8,10 +8,10 @@ export default async function StudentLayout({ children }: { children: ReactNode 
   const nav = [
     { href: "/dashboard", label: t("dashboard") },
     { href: "/lessons", label: t("lessons") },
-    { href: "/learning", label: "Learning" },
-    { href: "/homework", label: "Homework" },
-    { href: "/progress", label: "Progress" },
-    { href: "/goals", label: "Goals" },
+    { href: "/learning", label: t("learning") },
+    { href: "/homework", label: t("homework") },
+    { href: "/progress", label: t("progress") },
+    { href: "/goals", label: t("goals") },
     { href: "/messages", label: t("messages") },
     { href: "/profile", label: t("profile") },
   ];

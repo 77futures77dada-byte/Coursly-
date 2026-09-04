@@ -1,4 +1,4 @@
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Placeholder } from "@/components/Placeholder";
 
 export default async function TutorStudentsPage({
@@ -8,11 +8,8 @@ export default async function TutorStudentsPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations("stub.tutorStudents");
   return (
-    <Placeholder
-      title="Students"
-      description="Students with an active relationship (a confirmed or completed booking). RLS scopes a tutor to exactly these."
-      scope="mvp"
-    />
+    <Placeholder title={t("title")} description={t("description")} scope="mvp" />
   );
 }

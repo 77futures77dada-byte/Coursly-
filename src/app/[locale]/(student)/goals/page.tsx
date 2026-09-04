@@ -1,4 +1,4 @@
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Placeholder } from "@/components/Placeholder";
 
 export default async function GoalsPage({
@@ -8,11 +8,8 @@ export default async function GoalsPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations("stub.goals");
   return (
-    <Placeholder
-      title="Goals"
-      description="Target scores and deadlines per subject, updated as progress is recorded. Not in the first release."
-      scope="post-mvp"
-    />
+    <Placeholder title={t("title")} description={t("description")} scope="post-mvp" />
   );
 }

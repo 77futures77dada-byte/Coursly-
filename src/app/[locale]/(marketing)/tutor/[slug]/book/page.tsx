@@ -3,6 +3,15 @@ import { Card, CardBody } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { LESSON_DURATIONS_MIN } from "@/lib/constants";
 
+const SLOTS = [
+  { day: "mon", time: "15:00" },
+  { day: "tue", time: "17:00" },
+  { day: "wed", time: "18:00" },
+  { day: "thu", time: "16:00" },
+  { day: "fri", time: "14:00" },
+  { day: "sat", time: "11:00" },
+] as const;
+
 /**
  * Booking + payment. The price total, platform fee and tutor payout are computed
  * server-side (Edge Function) from the slot and duration — the client only picks.
@@ -24,16 +33,14 @@ export default async function BookLessonPage({
           <div>
             <p className="text-sm text-text-muted">{t("selectSlot")}</p>
             <div className="mt-2 grid grid-cols-3 gap-2">
-              {["Mon 15:00", "Tue 17:00", "Wed 18:00", "Thu 16:00", "Fri 14:00", "Sat 11:00"].map(
-                (slot) => (
-                  <button
-                    key={slot}
-                    className="rounded-md border border-border py-2 text-sm hover:border-accent"
-                  >
-                    {slot}
-                  </button>
-                ),
-              )}
+              {SLOTS.map((slot) => (
+                <button
+                  key={`${slot.day}-${slot.time}`}
+                  className="rounded-md border border-border py-2 text-sm hover:border-accent"
+                >
+                  {t(`weekdaysShort.${slot.day}`)} {slot.time}
+                </button>
+              ))}
             </div>
           </div>
 
@@ -45,7 +52,7 @@ export default async function BookLessonPage({
                   key={d}
                   className="rounded-md border border-border px-3 py-1.5 text-sm hover:border-accent"
                 >
-                  {d} min
+                  {t("minutesShort", { count: d })}
                 </button>
               ))}
             </div>
@@ -57,9 +64,7 @@ export default async function BookLessonPage({
           </div>
 
           <Button className="w-full">{t("payAndBook")}</Button>
-          <p className="text-center text-xs text-text-muted">
-            Payment via Stripe. Booking is confirmed only after payment succeeds.
-          </p>
+          <p className="text-center text-xs text-text-muted">{t("paymentNote")}</p>
         </CardBody>
       </Card>
     </div>

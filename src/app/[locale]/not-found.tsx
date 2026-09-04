@@ -11,7 +11,7 @@ export default function LocaleNotFound() {
         <h1 className="mt-1 text-lg font-semibold">{t("emptyDefault")}</h1>
         <Link href="/" className="mt-4 inline-block">
           <Button variant="secondary" size="sm">
-            Coursly
+            {t("backHome")}
           </Button>
         </Link>
       </div>

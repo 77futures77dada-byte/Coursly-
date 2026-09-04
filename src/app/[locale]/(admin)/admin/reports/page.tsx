@@ -1,4 +1,4 @@
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { EmptyState } from "@/components/ui/States";
 import { Placeholder } from "@/components/Placeholder";
 
@@ -9,13 +9,10 @@ export default async function AdminReportsPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations("stub.adminReports");
   return (
-    <Placeholder
-      title="Reports & disputes"
-      description="User reports and disputed bookings. Resolve, refund, or escalate."
-      scope="mvp"
-    >
-      <EmptyState title="Nothing to moderate" />
+    <Placeholder title={t("title")} description={t("description")} scope="mvp">
+      <EmptyState title={t("empty")} />
     </Placeholder>
   );
 }

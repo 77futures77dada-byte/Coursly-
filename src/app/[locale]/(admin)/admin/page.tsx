@@ -1,6 +1,8 @@
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Card, CardBody } from "@/components/ui/Card";
 import { Placeholder } from "@/components/Placeholder";
+
+const STAT_KEYS = ["users", "tutorsVerified", "gmvMonth", "commissionMonth"] as const;
 
 export default async function AdminOverview({
   params,
@@ -9,18 +11,15 @@ export default async function AdminOverview({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations("adminOverview");
 
   return (
-    <Placeholder
-      title="Overview"
-      description="Users, revenue, platform commission, verification queue length, open disputes."
-      scope="mvp"
-    >
+    <Placeholder title={t("title")} description={t("description")} scope="mvp">
       <div className="grid gap-4 sm:grid-cols-4">
-        {["Users", "Tutors verified", "GMV (month)", "Commission (month)"].map((l) => (
-          <Card key={l}>
+        {STAT_KEYS.map((key) => (
+          <Card key={key}>
             <CardBody>
-              <p className="text-sm text-text-muted">{l}</p>
+              <p className="text-sm text-text-muted">{t(`stats.${key}`)}</p>
               <p className="mt-1 text-2xl font-semibold">—</p>
             </CardBody>
           </Card>

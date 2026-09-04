@@ -1,4 +1,4 @@
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Placeholder } from "@/components/Placeholder";
 
 export default async function TutorHomeworkPage({
@@ -8,11 +8,8 @@ export default async function TutorHomeworkPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations("stub.tutorHomework");
   return (
-    <Placeholder
-      title="Homework"
-      description="Create assignments, review submissions, leave scores and feedback. Not in the first release."
-      scope="post-mvp"
-    />
+    <Placeholder title={t("title")} description={t("description")} scope="post-mvp" />
   );
 }

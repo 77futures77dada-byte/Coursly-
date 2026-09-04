@@ -2,17 +2,25 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages, setRequestLocale } from "next-intl/server";
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { Inter } from "next/font/google";
 import { routing, isLocale } from "@/i18n/routing";
 import "../globals.css";
 
 const inter = Inter({ subsets: ["latin", "latin-ext", "cyrillic"], variable: "--font-sans" });
 
-export const metadata: Metadata = {
-  title: { default: "Coursly", template: "%s · Coursly" },
-  description: "Find the right tutor. Book. Learn.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "brand" });
+  return {
+    title: { default: "Coursly", template: "%s · Coursly" },
+    description: t("tagline"),
+  };
+}
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));

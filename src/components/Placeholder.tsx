@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { useTranslations } from "next-intl";
 import { Badge } from "@/components/ui/Badge";
 import { Card, CardBody } from "@/components/ui/Card";
 
@@ -18,6 +19,7 @@ export function Placeholder({
   scope?: "mvp" | "post-mvp";
   children?: ReactNode;
 }) {
+  const t = useTranslations("placeholder");
   return (
     <div className="space-y-4">
       <div className="flex items-center gap-2">
@@ -31,10 +33,7 @@ export function Placeholder({
       ) : null}
       {children ?? (
         <Card>
-          <CardBody className="text-sm text-text-muted">
-            Screen not built yet — this route is wired so layout, navigation and access
-            control can be developed against it.
-          </CardBody>
+          <CardBody className="text-sm text-text-muted">{t("notBuilt")}</CardBody>
         </Card>
       )}
     </div>

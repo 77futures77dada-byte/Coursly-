@@ -1,4 +1,4 @@
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Placeholder } from "@/components/Placeholder";
 
 export default async function TutorMaterialsPage({
@@ -8,11 +8,8 @@ export default async function TutorMaterialsPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations("stub.tutorMaterials");
   return (
-    <Placeholder
-      title="Materials"
-      description="Upload files with private / student / public visibility. Not in the first release."
-      scope="post-mvp"
-    />
+    <Placeholder title={t("title")} description={t("description")} scope="post-mvp" />
   );
 }

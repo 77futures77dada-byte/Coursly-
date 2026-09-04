@@ -1,4 +1,4 @@
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Placeholder } from "@/components/Placeholder";
 
 export default async function LearningPage({
@@ -8,11 +8,8 @@ export default async function LearningPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations("stub.learning");
   return (
-    <Placeholder
-      title="Learning"
-      description="Materials shared by tutors, saved notes, AI flashcards. Not in the first release."
-      scope="post-mvp"
-    />
+    <Placeholder title={t("title")} description={t("description")} scope="post-mvp" />
   );
 }

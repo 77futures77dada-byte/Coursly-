@@ -5,8 +5,12 @@ export const MOCK_TUTORS: TutorCardData[] = [
   {
     slug: "maria-tamm",
     name: "Maria Tamm",
-    headline: "Matemaatika · gümnaasium ja riigieksam",
-    subjects: ["Mathematics", "Physics"],
+    headline: {
+      et: "Matemaatika · gümnaasium ja riigieksam",
+      ru: "Математика · гимназия и госэкзамен",
+      en: "Mathematics · gymnasium and state exam",
+    },
+    subjectSlugs: ["mathematics", "physics"],
     languages: ["et", "en"],
     priceHour: 28,
     rating: 4.9,
@@ -16,8 +20,12 @@ export const MOCK_TUTORS: TutorCardData[] = [
   {
     slug: "andrei-kuznetsov",
     name: "Andrei Kuznetsov",
-    headline: "Английский язык — разговорный и IELTS",
-    subjects: ["English"],
+    headline: {
+      et: "Inglise keel — kõnekeel ja IELTS",
+      ru: "Английский язык — разговорный и IELTS",
+      en: "English — conversation and IELTS",
+    },
+    subjectSlugs: ["english"],
     languages: ["ru", "en"],
     priceHour: 22,
     rating: 4.8,
@@ -27,8 +35,12 @@ export const MOCK_TUTORS: TutorCardData[] = [
   {
     slug: "liis-saar",
     name: "Liis Saar",
-    headline: "Chemistry & biology, exam preparation",
-    subjects: ["Chemistry", "Biology"],
+    headline: {
+      et: "Keemia ja bioloogia, eksamiks valmistumine",
+      ru: "Химия и биология, подготовка к экзамену",
+      en: "Chemistry and biology, exam preparation",
+    },
+    subjectSlugs: ["chemistry", "biology"],
     languages: ["et", "en"],
     priceHour: 25,
     rating: 4.7,

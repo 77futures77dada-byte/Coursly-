@@ -9,26 +9,24 @@ export default async function SignInPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const t = await getTranslations({ locale, namespace: "nav" });
+  const tNav = await getTranslations("nav");
+  const t = await getTranslations("signIn");
 
   return (
     <div className="mx-auto max-w-sm px-4 py-16">
-      <h1 className="text-xl font-semibold tracking-tight">{t("signIn")}</h1>
+      <h1 className="text-xl font-semibold tracking-tight">{tNav("signIn")}</h1>
       <Card className="mt-6">
         <CardBody className="space-y-3">
           <input
             type="email"
-            placeholder="you@example.com"
+            placeholder={t("emailPlaceholder")}
             className="h-10 w-full rounded-md border border-border bg-surface px-3 text-sm"
           />
-          <Button className="w-full">Send magic link</Button>
-          <div className="text-center text-xs text-text-muted">or</div>
+          <Button className="w-full">{t("sendMagicLink")}</Button>
+          <div className="text-center text-xs text-text-muted">{t("or")}</div>
           <Button variant="secondary" className="w-full">
-            Continue with Google
+            {t("continueWithGoogle")}
           </Button>
-          <p className="pt-1 text-center text-xs text-text-muted">
-            Auth is handled by Supabase Auth (magic link + OAuth).
-          </p>
         </CardBody>
       </Card>
     </div>

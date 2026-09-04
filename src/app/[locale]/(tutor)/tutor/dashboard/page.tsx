@@ -1,7 +1,9 @@
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Card, CardBody } from "@/components/ui/Card";
 import { EmptyState } from "@/components/ui/States";
 import { Placeholder } from "@/components/Placeholder";
+
+const STAT_KEYS = ["pendingRequests", "lessonsThisWeek", "earningsMonth"] as const;
 
 export default async function TutorDashboard({
   params,
@@ -10,25 +12,22 @@ export default async function TutorDashboard({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations("tutorDashboard");
 
   return (
-    <Placeholder
-      title="Tutor dashboard"
-      description="Pending booking requests to accept/decline, today's lessons, this month's earnings, verification status."
-      scope="mvp"
-    >
+    <Placeholder title={t("title")} description={t("description")} scope="mvp">
       <div className="grid gap-4 sm:grid-cols-3">
-        {["Pending requests", "Lessons this week", "Earnings (month)"].map((l) => (
-          <Card key={l}>
+        {STAT_KEYS.map((key) => (
+          <Card key={key}>
             <CardBody>
-              <p className="text-sm text-text-muted">{l}</p>
+              <p className="text-sm text-text-muted">{t(`stats.${key}`)}</p>
               <p className="mt-1 text-2xl font-semibold">0</p>
             </CardBody>
           </Card>
         ))}
       </div>
       <div className="mt-4">
-        <EmptyState title="No booking requests" body="New requests from students appear here for you to confirm." />
+        <EmptyState title={t("emptyTitle")} body={t("emptyBody")} />
       </div>
     </Placeholder>
   );

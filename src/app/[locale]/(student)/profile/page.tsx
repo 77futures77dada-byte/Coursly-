@@ -8,13 +8,10 @@ export default async function ProfilePage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const t = await getTranslations({ locale, namespace: "nav" });
+  const tNav = await getTranslations({ locale, namespace: "nav" });
+  const t = await getTranslations({ locale, namespace: "stub.profile" });
 
   return (
-    <Placeholder
-      title={t("profile")}
-      description="Name, avatar, locale, notification preferences, and the onboarding survey answers (subject, level, goal, language, budget, availability) — editable."
-      scope="mvp"
-    />
+    <Placeholder title={tNav("profile")} description={t("description")} scope="mvp" />
   );
 }

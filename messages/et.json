@@ -9,7 +9,11 @@
     "dashboard": "Töölaud",
     "lessons": "Tunnid",
     "messages": "Sõnumid",
-    "profile": "Profiil"
+    "profile": "Profiil",
+    "learning": "Õppimine",
+    "homework": "Kodutööd",
+    "progress": "Edenemine",
+    "goals": "Eesmärgid"
   },
   "mobileNav": {
     "home": "Avaleht",
@@ -17,6 +21,9 @@
     "lessons": "Tunnid",
     "messages": "Sõnumid",
     "profile": "Profiil"
+  },
+  "footer": {
+    "tagline": "Eratunnid internetis — algul Eesti, seejärel EL."
   },
   "marketing": {
     "heroTitle": "Õpi juhendajatelt, kes sinuga sobivad",
@@ -34,6 +41,18 @@
     "forTutorsBody": "Määra hind ja saadavus, läbi kontroll ja saa broneeringuid. Väljamaksed käivad Stripe'i kaudu.",
     "forTutorsCta": "Hakka juhendajaks"
   },
+  "subjects": {
+    "mathematics": "Matemaatika",
+    "physics": "Füüsika",
+    "english": "Inglise keel",
+    "chemistry": "Keemia",
+    "biology": "Bioloogia"
+  },
+  "languages": {
+    "et": "Eesti keel",
+    "ru": "Vene keel",
+    "en": "Inglise keel"
+  },
   "search": {
     "title": "Leia juhendaja",
     "subjectLabel": "Aine",
@@ -42,7 +61,16 @@
     "priceLabel": "Max hind tunnis",
     "availabilityLabel": "Saadavus",
     "resultsCount": "{count, plural, =0 {Juhendajaid ei leitud} one {# juhendaja} other {# juhendajat}}",
-    "matchScore": "{score}% sobivus"
+    "matchScore": "{score}% sobivus",
+    "filtersNote": "Peagi saab filtreerida kõigi tunnuste järgi."
+  },
+  "tutorCard": {
+    "viewProfile": "Vaata profiili"
+  },
+  "tutorProfile": {
+    "book": "Broneeri tund",
+    "message": "Kirjuta",
+    "contentNote": "Siia tulevad juhendaja tutvustus, video, ained ja tasemed, keeled, arvustused ning vaba aja kalender."
   },
   "onboarding": {
     "title": "Leiame sulle juhendaja",
@@ -54,7 +82,35 @@
     "availability": "Millal oled tavaliselt vaba?",
     "submit": "Näita sobivaid juhendajaid",
     "back": "Tagasi",
-    "next": "Edasi"
+    "next": "Edasi",
+    "previewText": "Sinu vastustega saame juba hinnata {count} tegurit. Näidis parimast sobivusest: {score}%",
+    "options": {
+      "level": {
+        "primary": "Algkool",
+        "basic": "Põhikool",
+        "gymnasium": "Gümnaasium",
+        "university": "Ülikool",
+        "adult": "Täiskasvanu"
+      },
+      "goal": {
+        "catchUp": "Järele jõuda",
+        "grades": "Parandada hindeid",
+        "exam": "Riigieksam",
+        "fluency": "Keeleoskus"
+      },
+      "budget": {
+        "lt15": "≤ 15 €",
+        "b15_25": "15–25 €",
+        "b25_35": "25–35 €",
+        "gt35": "35+ €"
+      },
+      "availability": {
+        "weekdayMornings": "Argipäeviti hommikuti",
+        "weekdayEvenings": "Argipäeviti õhtuti",
+        "weekends": "Nädalavahetustel",
+        "flexible": "Paindlik"
+      }
+    }
   },
   "booking": {
     "bookLesson": "Broneeri tund",
@@ -63,7 +119,174 @@
     "total": "Kokku",
     "payAndBook": "Maksa ja broneeri",
     "confirmedTitle": "Tund broneeritud",
-    "confirmedBody": "See on sinu kalendris. Saatsime üksikasjad e-postiga."
+    "confirmedBody": "See on sinu kalendris. Saatsime üksikasjad e-postiga.",
+    "paymentNote": "Makse toimub Stripe'i kaudu. Broneering kinnitatakse alles pärast edukat makset.",
+    "minutesShort": "{count} min",
+    "weekdaysShort": {
+      "mon": "E",
+      "tue": "T",
+      "wed": "K",
+      "thu": "N",
+      "fri": "R",
+      "sat": "L",
+      "sun": "P"
+    }
+  },
+  "signIn": {
+    "emailPlaceholder": "you@example.com",
+    "sendMagicLink": "Saada sisselogimislink",
+    "or": "või",
+    "continueWithGoogle": "Jätka Google'iga"
+  },
+  "tutorOnboarding": {
+    "title": "Hakka juhendajaks",
+    "intro": "Seitse sammu. Kui esitad profiili, vaatab Coursly meeskond selle üle, enne kui see otsingus ilmub.",
+    "gdprBadge": "Dokument kustutatakse pärast kontrolli",
+    "steps": {
+      "about": "Sinust ja pealkiri",
+      "subjects": "Ained ja tasemed",
+      "languages": "Keeled",
+      "price": "Tunnihind",
+      "availability": "Nädala saadavus",
+      "video": "Tutvustusvideo",
+      "verification": "Isiku kontroll"
+    }
+  },
+  "classroom": {
+    "header": "Klassiruum · tund {id}",
+    "leave": "Lahku",
+    "chat": "Vestlus",
+    "noMessages": "Sõnumeid veel pole.",
+    "messagePlaceholder": "Sõnum…",
+    "videoPlaceholder": "Videoala — siin avaneb tunni videosild."
+  },
+  "tutorNav": {
+    "title": "Coursly · Juhendaja",
+    "dashboard": "Töölaud",
+    "students": "Õpilased",
+    "schedule": "Ajakava",
+    "homework": "Kodutööd",
+    "materials": "Materjalid",
+    "earnings": "Teenitud"
+  },
+  "adminNav": {
+    "title": "Coursly · Admin",
+    "overview": "Ülevaade",
+    "tutors": "Juhendajate kontroll",
+    "users": "Kasutajad",
+    "payments": "Maksed",
+    "reports": "Kaebused ja vaidlused",
+    "subjects": "Ained"
+  },
+  "studentDashboard": {
+    "stats": {
+      "upcomingLessons": "Tulevased tunnid",
+      "hoursLearned": "Õpitud tunde",
+      "activeTutors": "Aktiivsed juhendajad"
+    },
+    "nextLesson": "Järgmine tund",
+    "emptyTitle": "Broneeritud tunde pole",
+    "emptyBody": "Leia juhendaja ja broneeri esimene tund, et alustada."
+  },
+  "tutorDashboard": {
+    "title": "Juhendaja töölaud",
+    "description": "Ootel broneerimistaotlused, tänased tunnid, selle kuu teenitud summa ja kontrolli olek.",
+    "stats": {
+      "pendingRequests": "Ootel taotlused",
+      "lessonsThisWeek": "Tunnid sel nädalal",
+      "earningsMonth": "Teenitud (kuu)"
+    },
+    "emptyTitle": "Broneerimistaotlusi pole",
+    "emptyBody": "Uued õpilaste taotlused ilmuvad siia kinnitamiseks."
+  },
+  "adminOverview": {
+    "title": "Ülevaade",
+    "description": "Kasutajad, tulu, platvormi komisjonitasu, kontrollijärjekord ja avatud vaidlused.",
+    "stats": {
+      "users": "Kasutajad",
+      "tutorsVerified": "Kontrollitud juhendajad",
+      "gmvMonth": "Käive (kuu)",
+      "commissionMonth": "Komisjonitasu (kuu)"
+    }
+  },
+  "stub": {
+    "lessons": {
+      "description": "Siia koonduvad kõik su tunnid — tulevased, toimunud ja tühistatud.",
+      "emptyTitle": "Tunde veel pole",
+      "emptyBody": "Tulevased, toimunud ja tühistatud tunnid ilmuvad siia."
+    },
+    "lessonDetail": {
+      "title": "Tunni üksikasjad",
+      "description": "Siin näed tunni aega, juhendajat, ainet ja olekut ning saad tunni alguses klassiruumiga liituda.",
+      "join": "Liitu klassiruumiga"
+    },
+    "messages": {
+      "description": "Siin saad reaalajas vestelda juhendajaga, kellega sul on käimasolev koostöö."
+    },
+    "profile": {
+      "description": "Nimi, pilt, keel, teavituste eelistused ja onboarding-küsitluse vastused — kõik on muudetav."
+    },
+    "learning": {
+      "title": "Õppimine",
+      "description": "Juhendajate jagatud materjalid, salvestatud märkmed ja kaardid. Tuleb pärast käivitamist."
+    },
+    "homework": {
+      "title": "Kodutööd",
+      "description": "Juhendajate ülesanded, sinu vastused, hinded ja tagasiside. Tuleb pärast käivitamist."
+    },
+    "progress": {
+      "title": "Edenemine",
+      "description": "Sinu tulemused ainete kaupa ajas. Tuleb pärast käivitamist."
+    },
+    "goals": {
+      "title": "Eesmärgid",
+      "description": "Sihttulemused ja tähtajad ainete kaupa, mis uuenevad edenemisega. Tuleb pärast käivitamist."
+    },
+    "tutorStudents": {
+      "title": "Õpilased",
+      "description": "Õpilased, kellega sul on käimasolev koostöö — kinnitatud või toimunud broneering."
+    },
+    "tutorSchedule": {
+      "title": "Ajakava",
+      "description": "Sinu iganädalased vabad ajad ja kinnitatud tunnid."
+    },
+    "tutorEarnings": {
+      "title": "Teenitud",
+      "description": "Toimunud tunnid, kogusummad, platvormi tasu ({feePct}%), sinu väljamakse ja väljamaksete taotlused."
+    },
+    "tutorHomework": {
+      "title": "Kodutööd",
+      "description": "Loo ülesandeid, vaata vastuseid, pane hindeid ja anna tagasisidet. Tuleb pärast käivitamist."
+    },
+    "tutorMaterials": {
+      "title": "Materjalid",
+      "description": "Laadi üles faile ja määra, kes neid näeb. Tuleb pärast käivitamist."
+    },
+    "adminTutors": {
+      "title": "Juhendajate kontroll",
+      "description": "Ülevaatust ootavad profiilid. Kinnita, lükka tagasi või peata. Dokumendid kustutatakse pärast ülevaatust.",
+      "empty": "Kontrollijärjekord on tühi"
+    },
+    "adminUsers": {
+      "title": "Kasutajad",
+      "description": "Otsi, filtreeri rolli järgi, blokeeri või taasta ja kustuta kasutajaid."
+    },
+    "adminPayments": {
+      "title": "Maksed",
+      "description": "Maksed, tagasimaksed ja väljamaksed. Platvormi komisjonitasu on praegu {feePct}% ja seda saab siin muuta."
+    },
+    "adminReports": {
+      "title": "Kaebused ja vaidlused",
+      "description": "Kasutajate kaebused ja vaidlustatud broneeringud. Lahenda, hüvita või eskaleeri.",
+      "empty": "Midagi pole modereerida"
+    },
+    "adminSubjects": {
+      "title": "Ained",
+      "description": "Ainete ja kategooriate lisamine ja muutmine, nimed kõigis keeltes."
+    }
+  },
+  "placeholder": {
+    "notBuilt": "Seda ekraani veel ei ole — see osa valmib peagi."
   },
   "states": {
     "loading": "Laadimine…",
@@ -74,7 +297,8 @@
     "errorTitle": "Midagi läks valesti",
     "errorBody": "Palun proovi uuesti. Kui kordub, võta ühendust toega.",
     "retry": "Proovi uuesti",
-    "successGeneric": "Valmis."
+    "successGeneric": "Valmis.",
+    "backHome": "Avalehele"
   },
   "role": { "student": "Õpilane", "tutor": "Juhendaja", "admin": "Administraator" },
   "comingSoon": {

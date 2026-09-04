@@ -1,4 +1,4 @@
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Placeholder } from "@/components/Placeholder";
 
 export default async function TutorSchedulePage({
@@ -8,11 +8,8 @@ export default async function TutorSchedulePage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations("stub.tutorSchedule");
   return (
-    <Placeholder
-      title="Schedule"
-      description="Weekly availability windows (with timezone) plus confirmed lessons. Advanced calendar is post-MVP; MVP is recurring weekly windows."
-      scope="mvp"
-    />
+    <Placeholder title={t("title")} description={t("description")} scope="mvp" />
   );
 }

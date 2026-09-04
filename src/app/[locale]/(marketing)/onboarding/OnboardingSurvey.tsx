@@ -16,12 +16,12 @@ type Answers = {
 };
 
 const STEPS: { key: keyof Answers; options: string[] }[] = [
-  { key: "subject", options: ["Mathematics", "English", "Physics", "Chemistry", "Biology"] },
-  { key: "level", options: ["Primary", "Basic school", "Gymnasium", "University", "Adult"] },
-  { key: "goal", options: ["Catch up", "Improve grades", "State exam", "Language fluency"] },
+  { key: "subject", options: ["mathematics", "english", "physics", "chemistry", "biology"] },
+  { key: "level", options: ["primary", "basic", "gymnasium", "university", "adult"] },
+  { key: "goal", options: ["catchUp", "grades", "exam", "fluency"] },
   { key: "language", options: ["et", "ru", "en"] },
-  { key: "budget", options: ["≤ 15", "15–25", "25–35", "35+"] },
-  { key: "availability", options: ["Weekday mornings", "Weekday evenings", "Weekends", "Flexible"] },
+  { key: "budget", options: ["lt15", "b15_25", "b25_35", "gt35"] },
+  { key: "availability", options: ["weekdayMornings", "weekdayEvenings", "weekends", "flexible"] },
 ];
 
 const EMPTY: Answers = {
@@ -35,12 +35,21 @@ const EMPTY: Answers = {
 
 export function OnboardingSurvey() {
   const t = useTranslations("onboarding");
+  const tOptions = useTranslations("onboarding.options");
+  const tSubjects = useTranslations("subjects");
+  const tLanguages = useTranslations("languages");
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<Answers>(EMPTY);
 
   const done = step >= STEPS.length;
   const current = STEPS[step];
   const progress = Math.round((step / STEPS.length) * 100);
+
+  function optionLabel(stepKey: keyof Answers, option: string): string {
+    if (stepKey === "subject") return tSubjects(option);
+    if (stepKey === "language") return tLanguages(option);
+    return tOptions(`${stepKey}.${option}`);
+  }
 
   const previewScore = useMemo(() => {
     // Purely illustrative: how much of the weighted score each answered factor unlocks.
@@ -61,9 +70,10 @@ export function OnboardingSurvey() {
         <CardBody className="space-y-4 text-center">
           <p className="text-lg font-semibold">{t("submit")}</p>
           <p className="text-sm text-text-muted">
-            With your answers we can already score {Object.values(MATCH_WEIGHTS).length}{" "}
-            factors. Example best match:{" "}
-            <span className="font-semibold text-accent">{Math.min(previewScore, 97)}%</span>
+            {t("previewText", {
+              count: Object.values(MATCH_WEIGHTS).length,
+              score: Math.min(previewScore, 97),
+            })}
           </p>
           <Button className="w-full" onClick={() => setStep(0)}>
             {t("back")}
@@ -102,7 +112,7 @@ export function OnboardingSurvey() {
                     : "border-border hover:border-accent")
                 }
               >
-                {opt}
+                {optionLabel(current.key, opt)}
               </button>
             );
           })}

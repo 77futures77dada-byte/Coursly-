@@ -1,4 +1,4 @@
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { EmptyState } from "@/components/ui/States";
 import { Placeholder } from "@/components/Placeholder";
 
@@ -9,13 +9,10 @@ export default async function AdminTutorsPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations("stub.adminTutors");
   return (
-    <Placeholder
-      title="Tutor verification"
-      description="Queue of profiles awaiting review. Approve / reject / suspend. Verification documents are shown from a short-lived signed URL and purged after review (GDPR)."
-      scope="mvp"
-    >
-      <EmptyState title="Verification queue is empty" />
+    <Placeholder title={t("title")} description={t("description")} scope="mvp">
+      <EmptyState title={t("empty")} />
     </Placeholder>
   );
 }

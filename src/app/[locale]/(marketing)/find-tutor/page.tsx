@@ -38,10 +38,7 @@ export default async function FindTutorPage({
                   </div>
                 ),
               )}
-              <p className="text-xs text-text-muted">
-                Filters are placeholders — wired to the search query in the search
-                feature.
-              </p>
+              <p className="text-xs text-text-muted">{t("filtersNote")}</p>
             </CardBody>
           </Card>
         </aside>

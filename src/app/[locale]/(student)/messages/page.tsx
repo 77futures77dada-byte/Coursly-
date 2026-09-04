@@ -9,15 +9,13 @@ export default async function MessagesPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const t = await getTranslations({ locale, namespace: "nav" });
+  const tNav = await getTranslations({ locale, namespace: "nav" });
+  const t = await getTranslations({ locale, namespace: "stub.messages" });
+  const tStates = await getTranslations({ locale, namespace: "states" });
 
   return (
-    <Placeholder
-      title={t("messages")}
-      description="Realtime chat (Supabase Realtime) between a student and a tutor they have an active relationship with. Attachments via Storage."
-      scope="mvp"
-    >
-      <EmptyState title="No conversations yet" />
+    <Placeholder title={tNav("messages")} description={t("description")} scope="mvp">
+      <EmptyState title={tStates("emptyMessages")} />
     </Placeholder>
   );
 }
