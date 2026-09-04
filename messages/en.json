@@ -83,7 +83,7 @@
     "submit": "Show my matches",
     "back": "Back",
     "next": "Next",
-    "previewText": "With your answers we can already score {count} factors. Example best match: {score}%",
+    "previewText": "Based on your answers, we can already factor in {factorsCovered} criteria.",
     "options": {
       "level": {
         "primary": "Primary",

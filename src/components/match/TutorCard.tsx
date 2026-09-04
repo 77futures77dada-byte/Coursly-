@@ -23,7 +23,18 @@ export function localized(text: LocalizedText, locale: string): string {
   return text[locale as keyof LocalizedText] ?? text.en;
 }
 
-export function TutorCard({ tutor }: { tutor: TutorCardData }) {
+export function TutorCard({
+  tutor,
+  showMatchScore = false,
+}: {
+  tutor: TutorCardData;
+  /**
+   * Only show the match % when it was actually computed from a user's survey
+   * answers. On the landing page and unfiltered search there is no survey yet,
+   * so a number here would be misleading — keep it off (the default).
+   */
+  showMatchScore?: boolean;
+}) {
   const locale = useLocale();
   const tCard = useTranslations("tutorCard");
   const tSubjects = useTranslations("subjects");
@@ -36,7 +47,7 @@ export function TutorCard({ tutor }: { tutor: TutorCardData }) {
             <p className="font-medium">{tutor.name}</p>
             <p className="text-sm text-text-muted">{localized(tutor.headline, locale)}</p>
           </div>
-          {typeof tutor.matchScore === "number" ? (
+          {showMatchScore && typeof tutor.matchScore === "number" ? (
             <MatchScore score={tutor.matchScore} />
           ) : null}
         </div>

@@ -1,10 +1,9 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/Button";
 import { Card, CardBody } from "@/components/ui/Card";
-import { MATCH_WEIGHTS } from "@/lib/matching/score";
 
 type Answers = {
   subject: string;
@@ -51,29 +50,17 @@ export function OnboardingSurvey() {
     return tOptions(`${stepKey}.${option}`);
   }
 
-  const previewScore = useMemo(() => {
-    // Purely illustrative: how much of the weighted score each answered factor unlocks.
-    const answered = Object.values(answers).filter(Boolean).length;
-    const factorsCovered =
-      MATCH_WEIGHTS.subject +
-      MATCH_WEIGHTS.level +
-      MATCH_WEIGHTS.goal +
-      MATCH_WEIGHTS.language +
-      MATCH_WEIGHTS.availability +
-      MATCH_WEIGHTS.price;
-    return Math.round((answered / STEPS.length) * factorsCovered * 100 + 40);
-  }, [answers]);
-
   if (done) {
+    // Each survey question maps to one distinct matching factor — so the number
+    // of answered questions is the number of factors we can already weigh.
+    // This is an honest count, not a match result.
+    const factorsCovered = Object.values(answers).filter(Boolean).length;
     return (
       <Card>
         <CardBody className="space-y-4 text-center">
           <p className="text-lg font-semibold">{t("submit")}</p>
           <p className="text-sm text-text-muted">
-            {t("previewText", {
-              count: Object.values(MATCH_WEIGHTS).length,
-              score: Math.min(previewScore, 97),
-            })}
+            {t("previewText", { factorsCovered })}
           </p>
           <Button className="w-full" onClick={() => setStep(0)}>
             {t("back")}

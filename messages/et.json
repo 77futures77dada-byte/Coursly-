@@ -83,7 +83,7 @@
     "submit": "Näita sobivaid juhendajaid",
     "back": "Tagasi",
     "next": "Edasi",
-    "previewText": "Sinu vastustega saame juba hinnata {count} tegurit. Näidis parimast sobivusest: {score}%",
+    "previewText": "Sinu vastuste põhjal saame juba arvestada {factorsCovered} tegurit.",
     "options": {
       "level": {
         "primary": "Algkool",

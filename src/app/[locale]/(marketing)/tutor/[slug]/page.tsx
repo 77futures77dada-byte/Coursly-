@@ -4,7 +4,6 @@ import { Link } from "@/i18n/navigation";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Card, CardBody } from "@/components/ui/Card";
-import { MatchScore } from "@/components/match/MatchScore";
 import { localized } from "@/components/match/TutorCard";
 import { MOCK_TUTORS } from "@/lib/mock/tutors";
 
@@ -55,7 +54,6 @@ export default async function TutorProfilePage({
         <aside className="space-y-4">
           <Card>
             <CardBody className="space-y-4">
-              <MatchScore score={tutor.matchScore ?? 0} />
               <div className="text-2xl font-semibold">€{tutor.priceHour}/h</div>
               <Link href={`/tutor/${tutor.slug}/book`}>
                 <Button className="w-full">{t("book")}</Button>

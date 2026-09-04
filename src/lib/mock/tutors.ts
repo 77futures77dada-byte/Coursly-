@@ -1,6 +1,13 @@
 import type { TutorCardData } from "@/components/match/TutorCard";
 
-/** Static sample data for building UI before the DB is wired. Not shipped. */
+/**
+ * Static sample data for building UI before the DB is wired. Not shipped.
+ *
+ * `matchScore` here is a placeholder, not a real computation. Only render it
+ * (via `<TutorCard showMatchScore />`) in a context where the score was actually
+ * derived from a user's survey answers — never on the landing page or unfiltered
+ * search, where it would be misleading.
+ */
 export const MOCK_TUTORS: TutorCardData[] = [
   {
     slug: "maria-tamm",
