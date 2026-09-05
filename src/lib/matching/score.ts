@@ -3,17 +3,26 @@
  * There is no booking history yet — an ML recommender would just be noise.
  * Revisit once there is real usage data. (Spec section 7.)
  *
- * Weights sum to 1.0.
+ * Weights sum to 1.0. The original 8 factors are spec section 7's weights each
+ * scaled down 8% to make room for `reliability`, so their relative proportions
+ * to each other are unchanged.
+ *
+ * `reliability` is not computed by anything yet — `computeMatch()` below has no
+ * caller in this codebase. Once one exists, pass
+ * `1 - tutorProfiles.cancellation_rate` (clamped to [0, 1]) as its factor score;
+ * `cancellation_rate` is maintained by the `trg_after_booking_cancellation`
+ * trigger in supabase/migrations/0003_cancellation_policy.sql.
  */
 export const MATCH_WEIGHTS = {
-  subject: 0.3,
-  level: 0.15,
-  goal: 0.15,
-  language: 0.1,
-  availability: 0.1,
-  price: 0.1,
-  rating: 0.05,
-  experience: 0.05,
+  subject: 0.276,
+  level: 0.138,
+  goal: 0.138,
+  language: 0.092,
+  availability: 0.092,
+  price: 0.092,
+  rating: 0.046,
+  experience: 0.046,
+  reliability: 0.08,
 } as const;
 
 export type MatchFactor = keyof typeof MATCH_WEIGHTS;
