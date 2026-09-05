@@ -3,6 +3,7 @@ import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/Button";
 import { TutorCard } from "@/components/match/TutorCard";
+import { HeroIllustrationLeft, HeroIllustrationRight } from "@/components/illustrations/HeroIllustrations";
 import { MOCK_TUTORS } from "@/lib/mock/tutors";
 
 export default async function LandingPage({
@@ -20,22 +21,28 @@ function Landing() {
 
   return (
     <>
-      <section className="mx-auto max-w-6xl px-4 py-20 text-center">
-        <h1 className="mx-auto max-w-3xl text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
-          {t("heroTitle")}
-        </h1>
-        <p className="mx-auto mt-5 max-w-xl text-pretty text-base text-text-muted">
-          {t("heroSubtitle")}
-        </p>
-        <div className="mt-8 flex items-center justify-center gap-3">
-          <Link href="/onboarding">
-            <Button size="lg">{t("heroCtaPrimary")}</Button>
-          </Link>
-          <Link href="/#how-it-works">
-            <Button size="lg" variant="secondary">
-              {t("heroCtaSecondary")}
-            </Button>
-          </Link>
+      <section className="mx-auto max-w-6xl px-4 py-20">
+        <div className="lg:grid lg:grid-cols-[140px_minmax(0,1fr)_140px] lg:items-center lg:gap-6">
+          <HeroIllustrationLeft />
+          <div className="text-center">
+            <h1 className="mx-auto max-w-3xl text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
+              {t("heroTitle")}
+            </h1>
+            <p className="mx-auto mt-5 max-w-xl text-pretty text-base text-text-muted">
+              {t("heroSubtitle")}
+            </p>
+            <div className="mt-8 flex items-center justify-center gap-3">
+              <Link href="/onboarding">
+                <Button size="lg">{t("heroCtaPrimary")}</Button>
+              </Link>
+              <Link href="/#how-it-works">
+                <Button size="lg" variant="secondary">
+                  {t("heroCtaSecondary")}
+                </Button>
+              </Link>
+            </div>
+          </div>
+          <HeroIllustrationRight />
         </div>
       </section>
 

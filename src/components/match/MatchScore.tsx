@@ -2,8 +2,9 @@ import { useTranslations } from "next-intl";
 import { cn } from "@/lib/cn";
 
 /**
- * The match score is one of only two places the accent color is allowed
- * (the other is CTAs). Keep it readable — a ring + a number, no chart.
+ * The match score is one of only a few places the accent color is allowed
+ * (the others: CTAs, and the two focal moments in the landing hero
+ * illustrations). Keep it readable — a ring + a number, no chart.
  */
 export function MatchScore({
   score,

@@ -65,3 +65,54 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+/*
+ * Hero illustrations: a staggered entrance (fade + rise) plus one gentle
+ * continuous float on a single element. `--illus-delay` is set per element
+ * inline for the stagger.
+ *
+ * Reduced motion: `.illus-enter`'s animation duration collapses to ~0 via the
+ * blanket rule above, so it lands on its final frame effectively instantly —
+ * no visible slide. The continuous `.illus-float` loop is defined only under
+ * `no-preference` below, so it never runs at all for reduced-motion users
+ * (collapsing an `infinite` animation's duration would still spin it, just very
+ * fast, which isn't the same as static).
+ */
+@keyframes illus-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes illus-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.illus-enter {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: illus-in 550ms ease-out forwards;
+  animation-delay: var(--illus-delay, 0ms);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .illus-float {
+    /* Redeclares the entrance alongside the float — a shorthand on the same
+       property replaces rather than merges, so both must live in one rule. */
+    animation:
+      illus-in 550ms ease-out forwards,
+      illus-float 4.5s ease-in-out infinite;
+    animation-delay: var(--illus-delay, 0ms), calc(var(--illus-delay, 0ms) + 600ms);
+  }
+}
