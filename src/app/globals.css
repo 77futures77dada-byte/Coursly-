@@ -67,9 +67,9 @@ body {
 }
 
 /*
- * Hero illustrations: a staggered entrance (fade + rise) plus one gentle
- * continuous float on a single element. `--illus-delay` is set per element
- * inline for the stagger.
+ * Hero illustrations: a staggered entrance (fade + rise + slight scale) plus a
+ * gentle continuous float on two elements (one per side panel). `--illus-delay`
+ * is set per element inline for the stagger.
  *
  * Reduced motion: `.illus-enter`'s animation duration collapses to ~0 via the
  * blanket rule above, so it lands on its final frame effectively instantly —
@@ -81,11 +81,11 @@ body {
 @keyframes illus-in {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(10px) scale(0.96);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
@@ -95,14 +95,14 @@ body {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
   }
 }
 
 .illus-enter {
   opacity: 0;
-  transform: translateY(10px);
-  animation: illus-in 550ms ease-out forwards;
+  transform: translateY(10px) scale(0.96);
+  animation: illus-in 750ms ease-out forwards;
   animation-delay: var(--illus-delay, 0ms);
 }
 
@@ -111,8 +111,8 @@ body {
     /* Redeclares the entrance alongside the float — a shorthand on the same
        property replaces rather than merges, so both must live in one rule. */
     animation:
-      illus-in 550ms ease-out forwards,
-      illus-float 4.5s ease-in-out infinite;
-    animation-delay: var(--illus-delay, 0ms), calc(var(--illus-delay, 0ms) + 600ms);
+      illus-in 750ms ease-out forwards,
+      illus-float 3.5s ease-in-out infinite;
+    animation-delay: var(--illus-delay, 0ms), calc(var(--illus-delay, 0ms) + 800ms);
   }
 }

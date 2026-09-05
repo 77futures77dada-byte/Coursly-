@@ -3,8 +3,8 @@ import { cn } from "@/lib/cn";
 
 /**
  * The match score is one of only a few places the accent color is allowed
- * (the others: CTAs, and the two focal moments in the landing hero
- * illustrations). Keep it readable — a ring + a number, no chart.
+ * (the others: CTAs, and the landing hero illustrations — two line accents
+ * plus a faint glow). Keep it readable — a ring + a number, no chart.
  */
 export function MatchScore({
   score,

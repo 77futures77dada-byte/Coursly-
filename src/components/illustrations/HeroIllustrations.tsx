@@ -11,16 +11,37 @@ import {
 const STAGGER_MS = 130;
 
 /**
- * One scene in the entrance stagger. `float` marks the single element that keeps
- * a gentle continuous motion after landing (see .illus-float in globals.css).
+ * One scene in the entrance stagger. `float` marks an element that keeps a gentle
+ * continuous motion after landing; `halo` puts a soft accent glow behind the
+ * scene (used for the anchor scene on each side). See globals.css.
  */
-function Beat({ index, float, children }: { index: number; float?: boolean; children: ReactNode }) {
+function Beat({
+  index,
+  float,
+  halo,
+  children,
+}: {
+  index: number;
+  float?: boolean;
+  halo?: boolean;
+  children: ReactNode;
+}) {
   return (
     <div
       className={float ? "illus-enter illus-float" : "illus-enter"}
       style={{ "--illus-delay": `${index * STAGGER_MS}ms` } as CSSProperties}
     >
-      {children}
+      {halo ? (
+        <div className="relative isolate flex">
+          <span
+            aria-hidden
+            className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-20 w-20 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/[0.06] blur-xl"
+          />
+          {children}
+        </div>
+      ) : (
+        children
+      )}
     </div>
   );
 }
@@ -35,7 +56,7 @@ export function HeroIllustrationLeft() {
       <Beat index={0} float>
         <ChatCheckScene />
       </Beat>
-      <Beat index={1}>
+      <Beat index={1} halo>
         <DeskBookScene />
       </Beat>
       <Beat index={2}>
@@ -52,10 +73,10 @@ export function HeroIllustrationRight() {
       <Beat index={0}>
         <BookStackScene />
       </Beat>
-      <Beat index={1}>
+      <Beat index={1} halo>
         <TeachBoardScene />
       </Beat>
-      <Beat index={2}>
+      <Beat index={2} float>
         <TrendUpAccent />
       </Beat>
     </div>
