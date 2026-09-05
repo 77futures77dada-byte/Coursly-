@@ -62,7 +62,8 @@
     "availabilityLabel": "Saadavus",
     "resultsCount": "{count, plural, =0 {Juhendajaid ei leitud} one {# juhendaja} other {# juhendajat}}",
     "matchScore": "{score}% sobivus",
-    "filtersNote": "Peagi saab filtreerida kõigi tunnuste järgi."
+    "filtersNote": "Peagi saab filtreerida kõigi tunnuste järgi.",
+    "clearFilters": "Näita kõiki juhendajaid"
   },
   "tutorCard": {
     "viewProfile": "Vaata profiili"
@@ -83,7 +84,6 @@
     "submit": "Näita sobivaid juhendajaid",
     "back": "Tagasi",
     "next": "Edasi",
-    "previewText": "Sinu vastuste põhjal saame juba arvestada {factorsCovered} tegurit.",
     "options": {
       "level": {
         "primary": "Algkool",

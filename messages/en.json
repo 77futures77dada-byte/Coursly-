@@ -62,7 +62,8 @@
     "availabilityLabel": "Availability",
     "resultsCount": "{count, plural, =0 {No tutors} one {# tutor} other {# tutors}}",
     "matchScore": "{score}% match",
-    "filtersNote": "Filtering by every parameter is coming soon."
+    "filtersNote": "Filtering by every parameter is coming soon.",
+    "clearFilters": "Show all tutors"
   },
   "tutorCard": {
     "viewProfile": "View profile"
@@ -83,7 +84,6 @@
     "submit": "Show my matches",
     "back": "Back",
     "next": "Next",
-    "previewText": "Based on your answers, we can already factor in {factorsCovered} criteria.",
     "options": {
       "level": {
         "primary": "Primary",

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
+import { useRouter } from "@/i18n/navigation";
 import { Button } from "@/components/ui/Button";
 import { Card, CardBody } from "@/components/ui/Card";
 
@@ -37,11 +38,12 @@ export function OnboardingSurvey() {
   const tOptions = useTranslations("onboarding.options");
   const tSubjects = useTranslations("subjects");
   const tLanguages = useTranslations("languages");
+  const router = useRouter();
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<Answers>(EMPTY);
 
-  const done = step >= STEPS.length;
   const current = STEPS[step];
+  const isLastStep = step === STEPS.length - 1;
   const progress = Math.round((step / STEPS.length) * 100);
 
   function optionLabel(stepKey: keyof Answers, option: string): string {
@@ -50,24 +52,9 @@ export function OnboardingSurvey() {
     return tOptions(`${stepKey}.${option}`);
   }
 
-  if (done) {
-    // Each survey question maps to one distinct matching factor — so the number
-    // of answered questions is the number of factors we can already weigh.
-    // This is an honest count, not a match result.
-    const factorsCovered = Object.values(answers).filter(Boolean).length;
-    return (
-      <Card>
-        <CardBody className="space-y-4 text-center">
-          <p className="text-lg font-semibold">{t("submit")}</p>
-          <p className="text-sm text-text-muted">
-            {t("previewText", { factorsCovered })}
-          </p>
-          <Button className="w-full" onClick={() => setStep(0)}>
-            {t("back")}
-          </Button>
-        </CardBody>
-      </Card>
-    );
+  // Hand the answers to /find-tutor as query params; that page filters the list.
+  function submit() {
+    router.push(`/find-tutor?${new URLSearchParams(answers).toString()}`);
   }
 
   return (
@@ -117,9 +104,9 @@ export function OnboardingSurvey() {
           <Button
             size="sm"
             disabled={!answers[current.key]}
-            onClick={() => setStep((s) => s + 1)}
+            onClick={() => (isLastStep ? submit() : setStep((s) => s + 1))}
           >
-            {step === STEPS.length - 1 ? t("submit") : t("next")}
+            {isLastStep ? t("submit") : t("next")}
           </Button>
         </div>
       </CardBody>

@@ -62,7 +62,8 @@
     "availabilityLabel": "Доступность",
     "resultsCount": "{count, plural, =0 {Нет репетиторов} one {# репетитор} few {# репетитора} other {# репетиторов}}",
     "matchScore": "совпадение {score}%",
-    "filtersNote": "Скоро можно будет фильтровать по всем параметрам."
+    "filtersNote": "Скоро можно будет фильтровать по всем параметрам.",
+    "clearFilters": "Показать всех репетиторов"
   },
   "tutorCard": {
     "viewProfile": "Открыть профиль"
@@ -83,7 +84,6 @@
     "submit": "Показать подборку",
     "back": "Назад",
     "next": "Далее",
-    "previewText": "По вашим ответам мы уже можем учесть {factorsCovered} факторов.",
     "options": {
       "level": {
         "primary": "Начальная школа",
