@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Link } from "@/i18n/navigation";
+import { Logo } from "@/components/brand/Logo";
 import { LocaleSwitcher } from "./LocaleSwitcher";
 import { MobileNav } from "./MobileNav";
 
@@ -25,7 +26,10 @@ export function AppShell({
     <div className="min-h-dvh md:grid md:grid-cols-[220px_1fr]">
       <aside className="hidden border-r border-border bg-surface md:flex md:flex-col">
         <div className="flex h-14 items-center border-b border-border px-4 text-[15px] font-semibold">
-          <Link href="/">Coursly</Link>
+          <Link href="/" className="flex items-center gap-2">
+            <Logo size={28} />
+            Coursly
+          </Link>
         </div>
         <nav className="flex-1 space-y-0.5 p-2 text-sm">
           {nav.map((item) => (
