@@ -30,6 +30,8 @@ const config: Config = {
         success: "rgb(var(--color-success) / <alpha-value>)",
         warning: "rgb(var(--color-warning) / <alpha-value>)",
         danger: "rgb(var(--color-danger) / <alpha-value>)",
+        // amber — decorative hero illustrations only, deliberately kept out of UI/CTA
+        warm: "rgb(var(--color-warm) / <alpha-value>)",
       },
       fontFamily: {
         sans: ["var(--font-sans)", "ui-sans-serif", "system-ui", "sans-serif"],

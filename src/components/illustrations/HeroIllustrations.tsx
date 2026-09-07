@@ -10,10 +10,21 @@ import {
 
 const STAGGER_MS = 130;
 
+type FloatCfg = {
+  /** peak vertical travel in px (negative = up) */
+  y: number;
+  /** peak tilt in deg */
+  r?: number;
+  /** full cycle in seconds */
+  dur: number;
+  /** phase offset in ms so no two elements share a rhythm */
+  lag?: number;
+};
+
 /**
- * One scene in the entrance stagger. `float` marks an element that keeps a gentle
- * continuous motion after landing; `halo` puts a soft accent glow behind the
- * scene (used for the anchor scene on each side). See globals.css.
+ * One scene in the entrance stagger. `float` gives it a continuous bob (see
+ * .illus-float in globals.css); `halo` puts a soft indigo glow behind the anchor
+ * scene.
  */
 function Beat({
   index,
@@ -22,26 +33,35 @@ function Beat({
   children,
 }: {
   index: number;
-  float?: boolean;
+  float?: FloatCfg;
   halo?: boolean;
   children: ReactNode;
 }) {
+  const style = {
+    "--illus-delay": `${index * STAGGER_MS}ms`,
+    ...(float && {
+      "--float-y": `${float.y}px`,
+      "--float-r": `${float.r ?? 0}deg`,
+      "--float-dur": `${float.dur}s`,
+      "--float-lag": `${float.lag ?? 120}ms`,
+    }),
+  } as CSSProperties;
+
+  const scene = halo ? (
+    <div className="relative isolate flex">
+      <span
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-28 w-28 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/[0.13] blur-xl"
+      />
+      {children}
+    </div>
+  ) : (
+    children
+  );
+
   return (
-    <div
-      className={float ? "illus-enter illus-float" : "illus-enter"}
-      style={{ "--illus-delay": `${index * STAGGER_MS}ms` } as CSSProperties}
-    >
-      {halo ? (
-        <div className="relative isolate flex">
-          <span
-            aria-hidden
-            className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-20 w-20 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/[0.06] blur-xl"
-          />
-          {children}
-        </div>
-      ) : (
-        children
-      )}
+    <div className={float ? "illus-enter illus-float" : "illus-enter"} style={style}>
+      {scene}
     </div>
   );
 }
@@ -53,13 +73,13 @@ function Beat({
 export function HeroIllustrationLeft() {
   return (
     <div className="hidden lg:flex lg:flex-col lg:items-center lg:gap-10" aria-hidden>
-      <Beat index={0} float>
+      <Beat index={0} float={{ y: -18, dur: 2.8, lag: 100 }}>
         <ChatCheckScene />
       </Beat>
       <Beat index={1} halo>
         <DeskBookScene />
       </Beat>
-      <Beat index={2}>
+      <Beat index={2} float={{ y: -14, r: 4, dur: 3.3, lag: 320 }}>
         <PencilAccent />
       </Beat>
     </div>
@@ -70,13 +90,13 @@ export function HeroIllustrationLeft() {
 export function HeroIllustrationRight() {
   return (
     <div className="hidden lg:flex lg:flex-col lg:items-center lg:gap-10" aria-hidden>
-      <Beat index={0}>
+      <Beat index={0} float={{ y: -13, dur: 3.6, lag: 480 }}>
         <BookStackScene />
       </Beat>
       <Beat index={1} halo>
         <TeachBoardScene />
       </Beat>
-      <Beat index={2} float>
+      <Beat index={2} float={{ y: -18, dur: 3.0, lag: 220 }}>
         <TrendUpAccent />
       </Beat>
     </div>

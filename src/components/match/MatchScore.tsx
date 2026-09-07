@@ -2,9 +2,11 @@ import { useTranslations } from "next-intl";
 import { cn } from "@/lib/cn";
 
 /**
- * The match score is one of only a few places the accent color is allowed
- * (the others: CTAs, and the landing hero illustrations — two line accents
- * plus a faint glow). Keep it readable — a ring + a number, no chart.
+ * The match score is one of only a few places the indigo accent is allowed
+ * (the others: CTAs, and the landing hero illustrations — the progress line and
+ * the halos; the illustrations also use a separate amber `warm` token, which is
+ * decorative-only and never appears in the UI). Keep it readable — a ring and a
+ * number, no chart.
  */
 export function MatchScore({
   score,

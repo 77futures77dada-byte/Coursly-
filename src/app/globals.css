@@ -18,6 +18,8 @@
   --color-accent-fg: 255 255 255;
   --color-accent-subtle: 238 238 252;
 
+  --color-warm: 242 184 75; /* amber — decorative hero illustrations ONLY, never UI/CTA */
+
   --color-success: 22 143 96;
   --color-warning: 176 122 12;
   --color-danger: 200 52 52;
@@ -36,6 +38,8 @@
   --color-accent: 129 122 255;
   --color-accent-fg: 15 16 22;
   --color-accent-subtle: 33 33 56;
+
+  --color-warm: 245 196 102; /* slightly lighter amber so it glows on the dark ground */
 
   --color-success: 63 185 130;
   --color-warning: 214 165 74;
@@ -67,21 +71,24 @@ body {
 }
 
 /*
- * Hero illustrations: a staggered entrance (fade + rise + slight scale) plus a
- * gentle continuous float on two elements (one per side panel). `--illus-delay`
- * is set per element inline for the stagger.
+ * Hero illustrations: a staggered entrance (rise + scale with a slight overshoot)
+ * plus a continuous float on the four accent scenes — two per panel — each with
+ * its own amplitude, period and phase so they never move in sync. One (the
+ * pencil) also rotates. The anchor scenes (desk, board) stay still.
  *
- * Reduced motion: `.illus-enter`'s animation duration collapses to ~0 via the
- * blanket rule above, so it lands on its final frame effectively instantly —
- * no visible slide. The continuous `.illus-float` loop is defined only under
- * `no-preference` below, so it never runs at all for reduced-motion users
- * (collapsing an `infinite` animation's duration would still spin it, just very
- * fast, which isn't the same as static).
+ * Per-element inline vars: --illus-delay (entrance stagger), --float-y / --float-r
+ * (amplitude + tilt), --float-dur (period), --float-lag (phase offset).
+ *
+ * Reduced motion: `.illus-enter`'s duration collapses to ~0 via the blanket rule
+ * above, so it lands on its final frame instantly — no visible motion. The
+ * continuous `.illus-float` loop is defined only under `no-preference` below, so
+ * it never runs at all for reduced-motion users (collapsing an `infinite`
+ * animation's duration would still spin it, just fast, which isn't static).
  */
 @keyframes illus-in {
   from {
     opacity: 0;
-    transform: translateY(10px) scale(0.96);
+    transform: translateY(12px) scale(0.94);
   }
   to {
     opacity: 1;
@@ -92,27 +99,28 @@ body {
 @keyframes illus-float {
   0%,
   100% {
-    transform: translateY(0);
+    transform: translateY(0) rotate(0deg);
   }
   50% {
-    transform: translateY(-8px);
+    transform: translateY(var(--float-y, -16px)) rotate(var(--float-r, 0deg));
   }
 }
 
 .illus-enter {
   opacity: 0;
-  transform: translateY(10px) scale(0.96);
-  animation: illus-in 750ms ease-out forwards;
+  transform: translateY(12px) scale(0.94);
+  animation: illus-in 720ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
   animation-delay: var(--illus-delay, 0ms);
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .illus-float {
-    /* Redeclares the entrance alongside the float — a shorthand on the same
-       property replaces rather than merges, so both must live in one rule. */
+    /* One shorthand — a second `animation` declaration would replace, not merge. */
     animation:
-      illus-in 750ms ease-out forwards,
-      illus-float 3.5s ease-in-out infinite;
-    animation-delay: var(--illus-delay, 0ms), calc(var(--illus-delay, 0ms) + 800ms);
+      illus-in 720ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
+      illus-float var(--float-dur, 2.9s) cubic-bezier(0.37, 0, 0.63, 1) infinite;
+    animation-delay:
+      var(--illus-delay, 0ms),
+      calc(var(--illus-delay, 0ms) + 720ms + var(--float-lag, 120ms));
   }
 }

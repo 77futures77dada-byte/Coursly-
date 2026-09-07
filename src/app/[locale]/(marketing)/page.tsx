@@ -22,7 +22,7 @@ function Landing() {
   return (
     <>
       <section className="mx-auto max-w-6xl px-4 py-20">
-        <div className="lg:grid lg:grid-cols-[140px_minmax(0,1fr)_140px] lg:items-center lg:gap-6">
+        <div className="lg:grid lg:grid-cols-[168px_minmax(0,1fr)_168px] lg:items-center lg:gap-6">
           <HeroIllustrationLeft />
           <div className="text-center">
             <h1 className="mx-auto max-w-3xl text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
