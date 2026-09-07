@@ -13,7 +13,7 @@ export function SiteHeader() {
           href="/"
           className="flex items-center gap-2 text-[15px] font-semibold tracking-tight"
         >
-          <Logo size={28} />
+          <Logo size={40} />
           Coursly
         </Link>
 

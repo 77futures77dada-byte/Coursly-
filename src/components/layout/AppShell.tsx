@@ -27,7 +27,7 @@ export function AppShell({
       <aside className="hidden border-r border-border bg-surface md:flex md:flex-col">
         <div className="flex h-14 items-center border-b border-border px-4 text-[15px] font-semibold">
           <Link href="/" className="flex items-center gap-2">
-            <Logo size={28} />
+            <Logo size={36} />
             Coursly
           </Link>
         </div>
