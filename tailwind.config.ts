@@ -2,15 +2,15 @@ import type { Config } from "tailwindcss";
 
 /**
  * Coursly design tokens.
- * Direction: Linear × Notion × Stripe — clean sans-serif, lots of air, thin borders,
- * soft shadows, restrained motion. Neutral base + a single indigo/soft-blue accent
- * used only for CTAs and match-scores. No gradients, no "everything blue".
+ * Direction (2026-09-13 redesign): dark ground + glassmorphism. One theme, no
+ * light variant — see globals.css for why. Neutral dark base + a single indigo
+ * accent for interactive elements (CTAs, links, active states, match scores);
+ * glass surfaces (`.glass`/`.glass-subtle`) for showcase/content panels.
  *
- * Colors are exposed as CSS variables (see globals.css) so light/dark themes swap
- * without a class-name explosion.
+ * Colors are exposed as CSS variables (see globals.css) so the palette can
+ * still be retuned without a class-name explosion across components.
  */
 const config: Config = {
-  darkMode: "class",
   content: ["./src/**/*.{ts,tsx,mdx}"],
   theme: {
     extend: {
@@ -32,9 +32,17 @@ const config: Config = {
         danger: "rgb(var(--color-danger) / <alpha-value>)",
         // amber — decorative hero illustrations only, deliberately kept out of UI/CTA
         warm: "rgb(var(--color-warm) / <alpha-value>)",
+        // glassmorphism surfaces (.glass / .glass-subtle in globals.css) — always
+        // used with an opacity modifier (bg-glass/8, border-glass/12), never solid
+        glass: "rgb(var(--color-glass) / <alpha-value>)",
       },
       fontFamily: {
         sans: ["var(--font-sans)", "ui-sans-serif", "system-ui", "sans-serif"],
+        // display: large headings only (hero H1, section titles) — never body
+        // text, buttons, forms or dashboards. Currently Playfair Display,
+        // loaded at weight 400 only — lean on size/tracking for hierarchy,
+        // not font-weight, unless a heavier cut is loaded later.
+        display: ["var(--font-display)", "ui-serif", "Georgia", "serif"],
       },
       borderRadius: {
         // rounded, but not pills

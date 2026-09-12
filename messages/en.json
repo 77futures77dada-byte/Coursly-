@@ -136,7 +136,20 @@
     "emailPlaceholder": "you@example.com",
     "sendMagicLink": "Send magic link",
     "or": "or",
-    "continueWithGoogle": "Continue with Google"
+    "continueWithGoogle": "Continue with Google",
+    "checkEmail": "Check your email for the sign-in link.",
+    "linkError": "Couldn't send the link. Check the address and try again.",
+    "contextPrompt": "Sign in to continue."
+  },
+  "chat": {
+    "threadFallbackName": "Conversation",
+    "emptyThread": "No messages yet — say hello.",
+    "inputPlaceholder": "Write a message…",
+    "send": "Send",
+    "sendError": "Couldn't send. Try again.",
+    "arrangeTime": "Arrange a time",
+    "allConversations": "All conversations",
+    "lastFromYou": "You: {text}"
   },
   "tutorOnboarding": {
     "title": "Become a tutor",
@@ -219,9 +232,6 @@
       "title": "Lesson detail",
       "description": "Here you'll see the lesson time, tutor, subject and status, and a button to join the classroom when it starts.",
       "join": "Join classroom"
-    },
-    "messages": {
-      "description": "Here you can chat in real time with a tutor you're actively working with."
     },
     "profile": {
       "description": "Name, photo, language, notification preferences and your survey answers — all editable."

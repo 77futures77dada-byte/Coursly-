@@ -3,11 +3,20 @@ import type { ReactNode } from "react";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
-import { Inter } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
 import { routing, isLocale } from "@/i18n/routing";
 import "../globals.css";
 
 const inter = Inter({ subsets: ["latin", "latin-ext", "cyrillic"], variable: "--font-sans" });
+// Display only: hero H1 and section headings via `font-display` — see
+// tailwind.config.ts. Instrument Serif was latin-only (no cyrillic), which
+// broke the RU headline; Playfair Display has the same editorial/high-contrast
+// character and ships a cyrillic subset, so et/ru/en all get the real font.
+const displayFont = Playfair_Display({
+  subsets: ["latin", "cyrillic"],
+  weight: "400",
+  variable: "--font-display",
+});
 
 export async function generateMetadata({
   params,
@@ -41,7 +50,11 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} className={inter.variable} suppressHydrationWarning>
+    <html
+      lang={locale}
+      className={`${inter.variable} ${displayFont.variable}`}
+      suppressHydrationWarning
+    >
       <body className="min-h-dvh bg-bg text-text antialiased">
         <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
       </body>

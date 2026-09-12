@@ -136,7 +136,20 @@
     "emailPlaceholder": "you@example.com",
     "sendMagicLink": "Saada sisselogimislink",
     "or": "või",
-    "continueWithGoogle": "Jätka Google'iga"
+    "continueWithGoogle": "Jätka Google'iga",
+    "checkEmail": "Vaata e-posti — saatsime sisselogimislingi.",
+    "linkError": "Linki ei õnnestunud saata. Kontrolli aadressi ja proovi uuesti.",
+    "contextPrompt": "Logi sisse, et jätkata."
+  },
+  "chat": {
+    "threadFallbackName": "Vestlus",
+    "emptyThread": "Sõnumeid veel pole — kirjuta esimesena.",
+    "inputPlaceholder": "Kirjuta sõnum…",
+    "send": "Saada",
+    "sendError": "Saatmine ebaõnnestus. Proovi uuesti.",
+    "arrangeTime": "Lepi aeg kokku",
+    "allConversations": "Kõik vestlused",
+    "lastFromYou": "Sina: {text}"
   },
   "tutorOnboarding": {
     "title": "Hakka juhendajaks",
@@ -219,9 +232,6 @@
       "title": "Tunni üksikasjad",
       "description": "Siin näed tunni aega, juhendajat, ainet ja olekut ning saad tunni alguses klassiruumiga liituda.",
       "join": "Liitu klassiruumiga"
-    },
-    "messages": {
-      "description": "Siin saad reaalajas vestelda juhendajaga, kellega sul on käimasolev koostöö."
     },
     "profile": {
       "description": "Nimi, pilt, keel, teavituste eelistused ja onboarding-küsitluse vastused — kõik on muudetav."

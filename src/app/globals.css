@@ -3,31 +3,14 @@
 @tailwind utilities;
 
 /*
- * Semantic color tokens. Light is the default; `.dark` on <html> swaps them.
+ * Semantic color tokens — one dark theme, no light variant. (Retired
+ * 2026-09-13: there was never a toggle wired to `.dark`, so maintaining two
+ * live palettes bought nothing. The values below are exactly the former
+ * `.dark` block — already tuned for a dark ground — promoted to `:root`. To
+ * bring light mode back, pull the old `:root` block from git history.)
  * Values are space-separated RGB channels so Tailwind's `/ <alpha-value>` works.
  */
 :root {
-  --color-bg: 250 250 251; /* near-white */
-  --color-surface: 255 255 255;
-  --color-surface-muted: 244 245 247;
-  --color-border: 226 228 233;
-  --color-text: 17 24 39; /* charcoal / dark navy */
-  --color-text-muted: 100 108 124;
-
-  --color-accent: 79 70 229; /* indigo — CTAs and match scores only */
-  --color-accent-fg: 255 255 255;
-  --color-accent-subtle: 238 238 252;
-
-  --color-warm: 242 184 75; /* amber — decorative hero illustrations ONLY, never UI/CTA */
-
-  --color-success: 22 143 96;
-  --color-warning: 176 122 12;
-  --color-danger: 200 52 52;
-
-  --font-sans: "Inter", "Inter Fallback";
-}
-
-.dark {
   --color-bg: 13 15 20;
   --color-surface: 20 23 30;
   --color-surface-muted: 28 32 41;
@@ -35,15 +18,21 @@
   --color-text: 232 234 238;
   --color-text-muted: 148 156 170;
 
-  --color-accent: 129 122 255;
+  --color-accent: 129 122 255; /* indigo — CTAs, match scores, interactive states */
   --color-accent-fg: 15 16 22;
   --color-accent-subtle: 33 33 56;
 
-  --color-warm: 245 196 102; /* slightly lighter amber so it glows on the dark ground */
+  --color-warm: 245 196 102; /* amber — decorative hero illustrations ONLY, never UI/CTA */
 
   --color-success: 63 185 130;
   --color-warning: 214 165 74;
   --color-danger: 240 113 113;
+
+  /* glassmorphism surfaces only — a light, faintly cool white so blur/opacity
+     reads as "glass" against the dark ground, never used as a solid fill */
+  --color-glass: 226 232 255;
+
+  --font-sans: "Inter", "Inter Fallback";
 }
 
 * {
@@ -51,7 +40,7 @@
 }
 
 html {
-  color-scheme: light dark;
+  color-scheme: dark;
 }
 
 body {
@@ -59,6 +48,41 @@ body {
   color: rgb(var(--color-text));
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+/*
+ * Glassmorphism surfaces. `.glass` is for decorative/showcase panels (cards,
+ * hero panels, modals) where the blur itself is part of the look. `.glass-subtle`
+ * is for anything text-dense or interactive (inputs, tables, list rows) — less
+ * blur, more opacity, so legibility wins over the effect.
+ *
+ * Both fall back to a solid panel when backdrop-filter isn't supported, so
+ * text never sits on a fully transparent, unreadable background.
+ */
+.glass {
+  background: rgb(var(--color-glass) / 0.06);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgb(var(--color-glass) / 0.12);
+  box-shadow:
+    0 8px 32px rgb(0 0 0 / 0.4),
+    inset 0 1px 0 rgb(var(--color-glass) / 0.08);
+}
+
+.glass-subtle {
+  background: rgb(var(--color-glass) / 0.1);
+  backdrop-filter: blur(10px) saturate(120%);
+  -webkit-backdrop-filter: blur(10px) saturate(120%);
+  border: 1px solid rgb(var(--color-glass) / 0.1);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass {
+    background: rgb(var(--color-surface) / 0.96);
+  }
+  .glass-subtle {
+    background: rgb(var(--color-surface) / 0.98);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

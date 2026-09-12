@@ -7,7 +7,7 @@ export default intlMiddleware;
 
 export const config = {
   // Run on everything except API routes, Next internals, static files (anything
-  // with a dot), and extensionless metadata routes like the generated
-  // `app/apple-icon` PNG — those must not be rewritten to a locale path.
-  matcher: ["/((?!api|_next|_vercel|apple-icon|.*\\..*).*)"],
+  // with a dot), the generated `app/apple-icon` PNG, and the `auth/*` utility
+  // routes (magic-link callback) — none of those may be rewritten to a locale.
+  matcher: ["/((?!api|_next|_vercel|apple-icon|auth|.*\\..*).*)"],
 };
