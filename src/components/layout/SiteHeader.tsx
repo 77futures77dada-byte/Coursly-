@@ -7,7 +7,7 @@ import { LocaleSwitcher } from "./LocaleSwitcher";
 export function SiteHeader() {
   const t = useTranslations("nav");
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-bg/80 backdrop-blur">
+    <header className="sticky top-0 z-40 glass-subtle">
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4">
         <Link
           href="/"
@@ -17,14 +17,23 @@ export function SiteHeader() {
           Coursly
         </Link>
 
-        <nav className="hidden items-center gap-6 text-sm text-text-muted md:flex">
-          <Link href="/find-tutor" className="hover:text-text">
+        <nav className="glass hidden items-center gap-1 rounded-full px-1.5 py-1.5 text-sm text-text-muted md:flex">
+          <Link
+            href="/find-tutor"
+            className="rounded-full px-3 py-1.5 transition hover:bg-glass/10 hover:text-text"
+          >
             {t("findTutor")}
           </Link>
-          <Link href="/#how-it-works" className="hover:text-text">
+          <Link
+            href="/#how-it-works"
+            className="rounded-full px-3 py-1.5 transition hover:bg-glass/10 hover:text-text"
+          >
             {t("howItWorks")}
           </Link>
-          <Link href="/tutor/onboarding" className="hover:text-text">
+          <Link
+            href="/tutor/onboarding"
+            className="rounded-full px-3 py-1.5 transition hover:bg-glass/10 hover:text-text"
+          >
             {t("forTutors")}
           </Link>
         </nav>
