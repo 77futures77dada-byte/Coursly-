@@ -3,6 +3,7 @@ import { Link } from "@/i18n/navigation";
 import { EmptyState } from "@/components/ui/States";
 import { createClient } from "@/lib/supabase/server";
 import { requireUser } from "@/lib/supabase/require-user";
+import { revealDelay } from "@/lib/reveal";
 
 // Reads the session — must render per request, never prerendered (a build-time
 // render has no cookies and would bake in the "redirect to sign-in" result).
@@ -47,17 +48,17 @@ export default async function MessagesPage({
 
   return (
     <div className="space-y-4">
-      <h2 className="text-lg font-semibold">{tNav("messages")}</h2>
+      <h2 className="reveal text-lg font-semibold">{tNav("messages")}</h2>
 
       {rows.length === 0 ? (
         <EmptyState title={tStates("emptyMessages")} />
       ) : (
-        <ul className="divide-y divide-border overflow-hidden rounded-lg border border-border">
+        <ul className="glass-subtle reveal divide-y divide-border overflow-hidden rounded-lg" style={revealDelay(80)}>
           {rows.map(({ c, last, partnerName }) => (
             <li key={c.id}>
               <Link
                 href={`/messages/${c.id}`}
-                className="flex items-center justify-between gap-3 px-4 py-3 hover:bg-surface-muted"
+                className="flex items-center justify-between gap-3 px-4 py-3 transition hover:bg-glass/10"
               >
                 <div className="min-w-0">
                   <p className="truncate text-sm font-medium">

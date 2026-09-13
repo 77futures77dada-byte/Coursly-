@@ -40,7 +40,7 @@ export function TutorCard({
   const tSubjects = useTranslations("subjects");
 
   return (
-    <Card className="transition hover:shadow-md">
+    <Card className="transition hover:-translate-y-0.5">
       <CardBody className="space-y-3">
         <div className="flex items-start justify-between gap-3">
           <div>
@@ -67,7 +67,7 @@ export function TutorCard({
 
         <Link
           href={`/tutor/${tutor.slug}`}
-          className="block rounded-md border border-border py-2 text-center text-sm font-medium hover:bg-surface-muted"
+          className="shine block rounded-md border border-border py-2 text-center text-sm font-medium transition hover:bg-glass/10"
         >
           {tCard("viewProfile")}
         </Link>

@@ -16,25 +16,26 @@ export default async function ClassroomPage({
   const t = await getTranslations("classroom");
 
   return (
-    <div className="grid h-dvh grid-rows-[auto_1fr] bg-[#0d0f14] text-white">
-      <header className="flex items-center justify-between border-b border-white/10 px-4 py-2 text-sm">
+    <div className="grid h-dvh grid-rows-[auto_1fr] bg-bg text-text">
+      <header className="flex items-center justify-between border-b border-border px-4 py-2 text-sm">
         <span>{t("header", { id })}</span>
-        <button className="rounded-md bg-danger px-3 py-1 text-xs font-medium">
+        <button className="rounded-md bg-danger px-3 py-1 text-xs font-medium text-white">
           {t("leave")}
         </button>
       </header>
       <div className="grid gap-3 p-3 md:grid-cols-[1fr_320px]">
-        <div className="grid place-items-center rounded-lg border border-white/10 bg-black/40 text-sm text-white/50">
+        {/* Solid, not glass — a real <video> element lands here later; blur would smear it. */}
+        <div className="grid place-items-center rounded-lg border border-border bg-surface text-sm text-text-muted">
           {t("videoPlaceholder")}
         </div>
-        <div className="flex flex-col rounded-lg border border-white/10 bg-black/20">
-          <div className="border-b border-white/10 px-3 py-2 text-xs uppercase tracking-wide text-white/50">
+        <div className="glass-subtle flex flex-col rounded-lg">
+          <div className="border-b border-border px-3 py-2 text-xs uppercase tracking-wide text-text-muted">
             {t("chat")}
           </div>
-          <div className="flex-1 p-3 text-sm text-white/40">{t("noMessages")}</div>
-          <div className="border-t border-white/10 p-2">
+          <div className="flex-1 p-3 text-sm text-text-muted">{t("noMessages")}</div>
+          <div className="border-t border-border p-2">
             <input
-              className="h-9 w-full rounded-md bg-white/5 px-3 text-sm outline-none"
+              className="glass-subtle h-9 w-full rounded-md px-3 text-sm outline-none focus-visible:border-accent"
               placeholder={t("messagePlaceholder")}
             />
           </div>

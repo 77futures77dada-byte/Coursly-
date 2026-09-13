@@ -108,10 +108,10 @@ export function ChatThread({
               <div
                 key={m.id}
                 className={cn(
-                  "max-w-[75%] rounded-lg px-3 py-2 text-sm",
+                  "max-w-[75%] rounded-lg px-3 py-2 text-sm backdrop-blur",
                   mine
-                    ? "ml-auto bg-accent-subtle text-accent"
-                    : "mr-auto bg-surface-muted text-text",
+                    ? "ml-auto border border-accent/30 bg-accent/20 text-text"
+                    : "glass-subtle mr-auto text-text",
                 )}
               >
                 <p className="whitespace-pre-wrap break-words">{m.body}</p>
@@ -151,7 +151,7 @@ export function ChatThread({
           }}
           rows={1}
           placeholder={t("inputPlaceholder")}
-          className="min-h-[40px] flex-1 resize-none rounded-md border border-border bg-surface px-3 py-2 text-sm"
+          className="glass-subtle min-h-[40px] flex-1 resize-none rounded-md px-3 py-2 text-sm outline-none focus-visible:border-accent"
         />
         <Button type="submit" disabled={!text.trim()}>
           {t("send")}

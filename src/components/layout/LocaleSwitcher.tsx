@@ -27,7 +27,7 @@ export function LocaleSwitcher() {
           className={
             "rounded px-2 py-1 text-xs font-medium transition " +
             (loc === locale
-              ? "bg-surface-muted text-text"
+              ? "bg-glass/15 text-text"
               : "text-text-muted hover:text-text")
           }
           aria-current={loc === locale ? "true" : undefined}

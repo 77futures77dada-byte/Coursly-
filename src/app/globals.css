@@ -92,6 +92,17 @@ body {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
+
+  /*
+   * The blanket rule above collapses duration but not iteration-count, so an
+   * `infinite` animation (Tailwind's `animate-pulse`, used by <Skeleton>) would
+   * keep looping — just too fast to see as a pulse, which reads as a flicker
+   * instead of "static". Same class of bug as .illus-float's guard above:
+   * infinite loops need to be turned off outright, not just sped up.
+   */
+  .animate-pulse {
+    animation: none;
+  }
 }
 
 /*
