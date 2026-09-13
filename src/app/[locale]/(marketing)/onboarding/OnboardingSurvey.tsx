@@ -58,10 +58,10 @@ export function OnboardingSurvey() {
   }
 
   return (
-    <Card>
+    <Card className="reveal">
       <CardBody className="space-y-5">
         <div>
-          <div className="h-1 w-full overflow-hidden rounded-full bg-surface-muted">
+          <div className="bg-glass/10 h-1 w-full overflow-hidden rounded-full">
             <div
               className="h-full rounded-full bg-accent transition-all"
               style={{ width: `${progress}%` }}
@@ -83,7 +83,7 @@ export function OnboardingSurvey() {
                   "rounded-md border px-3 py-2.5 text-left text-sm transition " +
                   (selected
                     ? "border-accent bg-accent-subtle text-accent"
-                    : "border-border hover:border-accent")
+                    : "glass-subtle hover:border-accent")
                 }
               >
                 {optionLabel(current.key, opt)}

@@ -8,6 +8,7 @@ import { Card, CardBody } from "@/components/ui/Card";
 import { localized } from "@/components/match/TutorCard";
 import { MOCK_TUTORS } from "@/lib/mock/tutors";
 import { createClient } from "@/lib/supabase/server";
+import { revealDelay } from "@/lib/reveal";
 import { startConversation } from "./actions";
 
 type TutorView = {
@@ -92,9 +93,9 @@ export default async function TutorProfilePage({
   return (
     <div className="mx-auto max-w-4xl px-4 py-12">
       <div className="grid gap-8 md:grid-cols-[1fr_280px]">
-        <div className="space-y-6">
+        <div className="reveal space-y-6">
           <div>
-            <h1 className="text-2xl font-semibold tracking-tight">{tutor.name}</h1>
+            <h1 className="font-display text-3xl tracking-tight">{tutor.name}</h1>
             {tutor.headline ? (
               <p className="mt-1 text-text-muted">{tutor.headline}</p>
             ) : null}
@@ -109,7 +110,7 @@ export default async function TutorProfilePage({
           </Card>
         </div>
 
-        <aside className="space-y-4">
+        <aside className="reveal space-y-4" style={revealDelay(120)}>
           <Card>
             <CardBody className="space-y-4">
               <div className="text-2xl font-semibold">

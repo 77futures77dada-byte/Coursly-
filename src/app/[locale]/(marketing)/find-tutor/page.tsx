@@ -5,6 +5,7 @@ import { Card, CardBody } from "@/components/ui/Card";
 import { EmptyState } from "@/components/ui/States";
 import { TutorCard } from "@/components/match/TutorCard";
 import { MOCK_TUTORS } from "@/lib/mock/tutors";
+import { revealDelay } from "@/lib/reveal";
 
 type SearchParams = Record<string, string | string[] | undefined>;
 
@@ -67,17 +68,17 @@ export default async function FindTutorPage({
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
-      <h1 className="text-2xl font-semibold tracking-tight">{t("title")}</h1>
+      <h1 className="reveal text-2xl font-semibold tracking-tight">{t("title")}</h1>
 
       <div className="mt-6 grid gap-6 md:grid-cols-[240px_1fr]">
-        <aside>
+        <aside className="reveal" style={revealDelay(80)}>
           <Card>
             <CardBody className="space-y-4 text-sm">
               {(["subjectLabel", "levelLabel", "languageLabel", "priceLabel", "availabilityLabel"] as const).map(
                 (k) => (
                   <div key={k}>
                     <label className="text-text-muted">{t(k)}</label>
-                    <div className="mt-1 h-9 rounded-md border border-border bg-surface-muted" />
+                    <div className="glass-subtle mt-1 h-9 rounded-md" />
                   </div>
                 ),
               )}
@@ -86,7 +87,7 @@ export default async function FindTutorPage({
           </Card>
         </aside>
 
-        <section>
+        <section className="reveal" style={revealDelay(160)}>
           {fromOnboarding && tutors.length === 0 ? (
             <EmptyState
               title={tStates("emptyMatches")}

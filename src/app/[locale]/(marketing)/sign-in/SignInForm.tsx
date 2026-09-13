@@ -51,7 +51,7 @@ export function SignInForm({ next }: { next?: string }) {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder={t("emailPlaceholder")}
-        className="h-10 w-full rounded-md border border-border bg-surface px-3 text-sm"
+        className="glass-subtle h-10 w-full rounded-md px-3 text-sm outline-none focus-visible:border-accent"
       />
       <Button type="submit" className="w-full" disabled={state === "sending"}>
         {t("sendMagicLink")}

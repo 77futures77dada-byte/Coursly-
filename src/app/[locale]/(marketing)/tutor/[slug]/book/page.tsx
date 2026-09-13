@@ -2,6 +2,7 @@ import { setRequestLocale, getTranslations } from "next-intl/server";
 import { Card, CardBody } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { LESSON_DURATIONS_MIN } from "@/lib/constants";
+import { revealDelay } from "@/lib/reveal";
 
 const SLOTS = [
   { day: "mon", time: "15:00" },
@@ -27,8 +28,8 @@ export default async function BookLessonPage({
 
   return (
     <div className="mx-auto max-w-lg px-4 py-12">
-      <h1 className="text-xl font-semibold tracking-tight">{t("bookLesson")}</h1>
-      <Card className="mt-6">
+      <h1 className="reveal text-xl font-semibold tracking-tight">{t("bookLesson")}</h1>
+      <Card className="reveal mt-6" style={revealDelay(100)}>
         <CardBody className="space-y-5">
           <div>
             <p className="text-sm text-text-muted">{t("selectSlot")}</p>
@@ -36,7 +37,7 @@ export default async function BookLessonPage({
               {SLOTS.map((slot) => (
                 <button
                   key={`${slot.day}-${slot.time}`}
-                  className="rounded-md border border-border py-2 text-sm hover:border-accent"
+                  className="glass-subtle rounded-md py-2 text-sm transition hover:border-accent"
                 >
                   {t(`weekdaysShort.${slot.day}`)} {slot.time}
                 </button>
@@ -50,7 +51,7 @@ export default async function BookLessonPage({
               {LESSON_DURATIONS_MIN.map((d) => (
                 <button
                   key={d}
-                  className="rounded-md border border-border px-3 py-1.5 text-sm hover:border-accent"
+                  className="glass-subtle rounded-md px-3 py-1.5 text-sm transition hover:border-accent"
                 >
                   {t("minutesShort", { count: d })}
                 </button>
