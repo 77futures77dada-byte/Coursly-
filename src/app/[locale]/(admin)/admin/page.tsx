@@ -15,7 +15,7 @@ export default async function AdminOverview({
 
   return (
     <Placeholder title={t("title")} description={t("description")} scope="mvp">
-      <div className="grid gap-4 sm:grid-cols-4">
+      <div className="reveal grid gap-4 sm:grid-cols-4">
         {STAT_KEYS.map((key) => (
           <Card key={key}>
             <CardBody>

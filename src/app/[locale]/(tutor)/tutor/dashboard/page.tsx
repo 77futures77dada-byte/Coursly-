@@ -2,6 +2,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Card, CardBody } from "@/components/ui/Card";
 import { EmptyState } from "@/components/ui/States";
 import { Placeholder } from "@/components/Placeholder";
+import { revealDelay } from "@/lib/reveal";
 
 const STAT_KEYS = ["pendingRequests", "lessonsThisWeek", "earningsMonth"] as const;
 
@@ -16,7 +17,7 @@ export default async function TutorDashboard({
 
   return (
     <Placeholder title={t("title")} description={t("description")} scope="mvp">
-      <div className="grid gap-4 sm:grid-cols-3">
+      <div className="reveal grid gap-4 sm:grid-cols-3">
         {STAT_KEYS.map((key) => (
           <Card key={key}>
             <CardBody>
@@ -26,7 +27,7 @@ export default async function TutorDashboard({
           </Card>
         ))}
       </div>
-      <div className="mt-4">
+      <div className="reveal mt-4" style={revealDelay(100)}>
         <EmptyState title={t("emptyTitle")} body={t("emptyBody")} />
       </div>
     </Placeholder>

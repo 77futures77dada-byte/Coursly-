@@ -20,7 +20,7 @@ export function EmptyState({
 }) {
   const t = useTranslations("states");
   return (
-    <div className="flex flex-col items-center justify-center rounded-lg border border-dashed border-border bg-surface px-6 py-12 text-center">
+    <div className="glass-subtle flex flex-col items-center justify-center rounded-lg border-dashed px-6 py-12 text-center">
       <p className="text-sm font-medium text-text">{title ?? t("emptyDefault")}</p>
       {body ? <p className="mt-1 max-w-sm text-sm text-text-muted">{body}</p> : null}
       {action ? <div className="mt-4">{action}</div> : null}
@@ -31,7 +31,7 @@ export function EmptyState({
 export function ErrorState({ onRetry }: { onRetry?: () => void }) {
   const t = useTranslations("states");
   return (
-    <div className="flex flex-col items-center justify-center rounded-lg border border-border bg-surface px-6 py-12 text-center">
+    <div className="glass-subtle flex flex-col items-center justify-center rounded-lg px-6 py-12 text-center">
       <p className="text-sm font-medium text-danger">{t("errorTitle")}</p>
       <p className="mt-1 max-w-sm text-sm text-text-muted">{t("errorBody")}</p>
       {onRetry ? (

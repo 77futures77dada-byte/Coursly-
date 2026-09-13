@@ -3,6 +3,7 @@ import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/Button";
 import { Card, CardBody, CardHeader } from "@/components/ui/Card";
 import { EmptyState } from "@/components/ui/States";
+import { revealDelay } from "@/lib/reveal";
 
 const STAT_KEYS = ["upcomingLessons", "hoursLearned", "activeTutors"] as const;
 
@@ -18,7 +19,7 @@ export default async function StudentDashboard({
 
   return (
     <div className="space-y-6">
-      <div className="grid gap-4 sm:grid-cols-3">
+      <div className="reveal grid gap-4 sm:grid-cols-3">
         {STAT_KEYS.map((key) => (
           <Card key={key}>
             <CardBody>
@@ -29,7 +30,7 @@ export default async function StudentDashboard({
         ))}
       </div>
 
-      <Card>
+      <Card className="reveal" style={revealDelay(100)}>
         <CardHeader className="flex items-center justify-between">
           <span className="text-sm font-semibold">{t("nextLesson")}</span>
         </CardHeader>
