@@ -2,6 +2,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/Button";
 import { Logo } from "@/components/brand/Logo";
+import { revealDelay } from "@/lib/reveal";
 import { LocaleSwitcher } from "./LocaleSwitcher";
 
 export function SiteHeader() {
@@ -11,34 +12,38 @@ export function SiteHeader() {
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4">
         <Link
           href="/"
-          className="flex items-center gap-2 text-[15px] font-semibold tracking-tight"
+          className="reveal flex items-center gap-2 text-[15px] font-semibold tracking-tight"
+          style={revealDelay(0)}
         >
           <Logo size={40} />
           Coursly
         </Link>
 
-        <nav className="glass hidden items-center gap-1 rounded-full px-1.5 py-1.5 text-sm text-text-muted md:flex">
+        <nav
+          className="reveal glass hidden items-center gap-1 rounded-full px-1.5 py-1.5 text-sm text-text-muted md:flex"
+          style={revealDelay(120)}
+        >
           <Link
             href="/find-tutor"
-            className="rounded-full px-3 py-1.5 transition hover:bg-glass/10 hover:text-text"
+            className="shine rounded-full px-3 py-1.5 transition hover:bg-glass/10 hover:text-text"
           >
             {t("findTutor")}
           </Link>
           <Link
             href="/#how-it-works"
-            className="rounded-full px-3 py-1.5 transition hover:bg-glass/10 hover:text-text"
+            className="shine rounded-full px-3 py-1.5 transition hover:bg-glass/10 hover:text-text"
           >
             {t("howItWorks")}
           </Link>
           <Link
             href="/tutor/onboarding"
-            className="rounded-full px-3 py-1.5 transition hover:bg-glass/10 hover:text-text"
+            className="shine rounded-full px-3 py-1.5 transition hover:bg-glass/10 hover:text-text"
           >
             {t("forTutors")}
           </Link>
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="reveal flex items-center gap-2" style={revealDelay(240)}>
           <LocaleSwitcher />
           <Link href="/sign-in" className="hidden md:block">
             <Button variant="ghost" size="sm">

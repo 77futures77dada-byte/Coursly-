@@ -193,3 +193,49 @@ body {
     0 0 28px rgb(var(--color-accent) / 0.5),
     0 0 60px rgb(var(--color-accent) / 0.22);
 }
+
+/*
+ * .glow-accent's calmer sibling for ordinary secondary/ghost buttons: no glow
+ * at rest (so it doesn't turn every secondary/ghost button on the site into a
+ * permanently-lit element), just a soft ring on hover.
+ */
+.glow-accent-hover {
+  transition: box-shadow 200ms ease;
+}
+
+.glow-accent-hover:hover {
+  box-shadow:
+    0 0 0 1px rgb(var(--color-accent) / 0.35),
+    0 0 18px rgb(var(--color-accent) / 0.28);
+}
+
+/*
+ * Liquid-glass shine: a diagonal highlight that sweeps across on hover, like
+ * light catching a glass edge. White on purpose — it's a specular highlight,
+ * not a colour wash, so it stays legible over the indigo primary button and
+ * over glass surfaces alike. Needs `position: relative` + hidden overflow,
+ * both included here.
+ */
+.shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 20%,
+    rgb(255 255 255 / 0.45) 48%,
+    transparent 76%
+  );
+  transform: translateX(-130%);
+  transition: transform 0.65s ease;
+  pointer-events: none;
+}
+
+.shine:hover::after {
+  transform: translateX(130%);
+}

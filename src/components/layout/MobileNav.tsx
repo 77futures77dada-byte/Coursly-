@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { cn } from "@/lib/cn";
+import { revealDelay } from "@/lib/reveal";
 
 const ITEMS = [
   { href: "/dashboard", key: "home" },
@@ -18,7 +19,10 @@ export function MobileNav() {
   const pathname = usePathname();
 
   return (
-    <nav className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-surface md:hidden">
+    <nav
+      className="reveal glass-subtle fixed inset-x-0 bottom-0 z-40 md:hidden"
+      style={revealDelay(150)}
+    >
       <ul className="mx-auto flex max-w-md">
         {ITEMS.map((item) => {
           const active = pathname.startsWith(item.href);

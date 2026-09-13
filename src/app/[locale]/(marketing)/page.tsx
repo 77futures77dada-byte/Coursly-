@@ -1,4 +1,3 @@
-import type { CSSProperties } from "react";
 import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
@@ -7,10 +6,7 @@ import { CountUp } from "@/components/ui/CountUp";
 import { TutorCard } from "@/components/match/TutorCard";
 import { HeroIllustrationLeft, HeroIllustrationRight } from "@/components/illustrations/HeroIllustrations";
 import { MOCK_TUTORS } from "@/lib/mock/tutors";
-
-function revealDelay(ms: number): CSSProperties {
-  return { "--reveal-delay": `${ms}ms` } as CSSProperties;
-}
+import { revealDelay } from "@/lib/reveal";
 
 export default async function LandingPage({
   params,

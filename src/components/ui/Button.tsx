@@ -11,9 +11,14 @@ const base =
   "focus-visible:ring-offset-bg disabled:pointer-events-none disabled:opacity-50";
 
 const variants: Record<Variant, string> = {
-  primary: "bg-accent text-accent-fg hover:opacity-90 shadow-xs",
-  secondary: "bg-surface text-text border border-border hover:bg-surface-muted",
-  ghost: "text-text-muted hover:bg-surface-muted hover:text-text",
+  // shine: a diagonal highlight sweep on hover (see .shine in globals.css) —
+  // the indigo fill underneath is unchanged, this is a light reflection on top.
+  primary: "shine bg-accent text-accent-fg hover:opacity-90 shadow-xs",
+  // frost: translucent glass instead of a solid panel, glow appears only on
+  // hover (not at rest — that stays for the one standout CTA using .glow-accent).
+  secondary:
+    "glow-accent-hover bg-glass/10 text-text border border-glass/15 backdrop-blur hover:bg-glass/20",
+  ghost: "glow-accent-hover text-text-muted hover:bg-glass/10 hover:text-text",
   danger: "bg-danger text-white hover:opacity-90",
 };
 
