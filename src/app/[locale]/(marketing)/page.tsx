@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/Button";
 import { CountUp } from "@/components/ui/CountUp";
 import { TutorCard } from "@/components/match/TutorCard";
 import { HeroIllustrationLeft, HeroIllustrationRight } from "@/components/illustrations/HeroIllustrations";
+import { HeroSpiral } from "@/components/illustrations/HeroSpiral";
 import { MOCK_TUTORS } from "@/lib/mock/tutors";
 import { revealDelay } from "@/lib/reveal";
 
@@ -23,7 +24,8 @@ function Landing() {
 
   return (
     <>
-      <section className="hero-glow overflow-hidden">
+      <section className="hero-glow relative isolate overflow-hidden">
+        <HeroSpiral />
         <div className="mx-auto max-w-6xl px-4 py-20">
           <div className="lg:grid lg:grid-cols-[168px_minmax(0,1fr)_168px] lg:items-center lg:gap-6">
             <HeroIllustrationLeft />
@@ -59,7 +61,7 @@ function Landing() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 pb-8">
+      <section className="morph-in mx-auto max-w-6xl px-4 pb-8">
         <div className="grid gap-4 sm:grid-cols-3">
           {MOCK_TUTORS.map((tutor) => (
             <TutorCard key={tutor.slug} tutor={tutor} />
@@ -67,11 +69,11 @@ function Landing() {
         </div>
       </section>
 
-      <section id="how-it-works" className="mx-auto max-w-6xl px-4 py-20">
+      <section id="how-it-works" className="morph-in mx-auto max-w-6xl px-4 py-20">
         <h2 className="font-display text-3xl tracking-tight">{t("stepsTitle")}</h2>
         <div className="mt-8 grid gap-8 sm:grid-cols-3">
-          {[1, 2, 3].map((n, i) => (
-            <div key={n} className="reveal" style={revealDelay(i * 140)}>
+          {[1, 2, 3].map((n) => (
+            <div key={n}>
               <div className="grid h-8 w-8 place-items-center rounded-full bg-accent-subtle text-sm font-semibold text-accent">
                 <CountUp to={n} />
               </div>
@@ -82,8 +84,8 @@ function Landing() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-16">
-        <div className="glass reveal rounded-xl px-6 py-10 sm:px-10">
+      <section className="morph-in mx-auto max-w-6xl px-4 py-16">
+        <div className="glass rounded-xl px-6 py-10 sm:px-10">
           <h2 className="font-display text-2xl tracking-tight sm:text-3xl">
             {t("forTutorsTitle")}
           </h2>

@@ -174,6 +174,71 @@ body {
 }
 
 /*
+ * Scroll-linked section entrance for the landing page ("переливающийся
+ * скролл") — sections fade/rise/unblur in as they're scrolled into view,
+ * instead of a hard cut. Unlike `.reveal` (which animates once at mount —
+ * already finished by the time a below-the-fold section is scrolled to),
+ * this is driven by scroll position itself via `animation-timeline: view()`.
+ *
+ * Deliberately double-gated and inert outside that gate — `.morph-in` alone
+ * (no @supports/@media match) sets NO properties, so content is always fully
+ * visible by default:
+ *   - @supports: browsers without view-timelines (Safari/Firefox at time of
+ *     writing) get nothing — sections just render normally. Never "stuck
+ *     invisible" from an animation that never runs.
+ *   - prefers-reduced-motion: reduce → same safe fallback, on purpose (plain
+ *     hard section boundaries, no scroll-driven motion at all).
+ */
+@keyframes morph-in {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .morph-in {
+      opacity: 0;
+      transform: translateY(24px) scale(0.98);
+      filter: blur(6px);
+      animation: morph-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 40%;
+    }
+  }
+}
+
+/*
+ * Hero vortex: a flat spiral tilted in 3D (perspective + rotateX) to read as
+ * a funnel, then slowly spun (rotateZ). See HeroSpiral.tsx.
+ */
+.spiral-tilt {
+  perspective: 900px;
+}
+
+.spiral-spin {
+  transform-style: preserve-3d;
+  transform: rotateX(58deg) rotateZ(0deg);
+}
+
+@keyframes spiral-spin {
+  from {
+    transform: rotateX(58deg) rotateZ(0deg);
+  }
+  to {
+    transform: rotateX(58deg) rotateZ(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .spiral-spin {
+    animation: spiral-spin 70s linear infinite;
+  }
+}
+
+/*
  * Hero background — a soft indigo glow over the dark ground in place of a
  * video, built only from --color-accent (no new hue).
  */
